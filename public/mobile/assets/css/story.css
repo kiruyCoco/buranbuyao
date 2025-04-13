@@ -1,0 +1,642 @@
+/* 基本样式 */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Noto Sans", Arial, sans-serif; /* 使用更有质感的字体 */
+  }
+
+  body {
+    background-color: #fffaf0; /* 底色 */
+    background-image: 
+      linear-gradient(45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%);
+    background-size: 40px 40px;
+    background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+  }
+  
+  /* 加载动画样式 */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);  /* 半透明背景 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* 旋转的动画 */
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #FFB6C1;  /* 粉色旋转 */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+/* 旋转动画 */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/*---------------------------------------------- 折纸飘落效果 ----------------------------------------------------------------*/
+.paper {
+  position: fixed;
+  top: -2vh;
+  width: 12px;
+  height: 12px;
+  opacity: 0.8;
+  transform: rotate(0deg);
+  animation: fallPaper linear forwards;
+  z-index: 9999;
+  border-radius: 2px;
+}
+
+@keyframes fallPaper {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* 导航栏 */
+.nav-bar {
+    position: fixed; /* 使导航栏固定在页面顶部 */
+    top: 0; /* 确保导航栏固定在顶部 */
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to right, #D9A78B, #C8A27E); /* 渐变背景色 */
+    padding: 2px 30px;
+    z-index: 1000; /* 确保导航栏在页面元素之上 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* 增加阴影 */
+    box-sizing: border-box;
+    border-bottom: 3px solid #C09775; /* 边框样式 */
+}
+
+  
+  /* 导航栏文字样式 */
+  .nav-bar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 25px;
+    font-size: 17px; /* 适中的字体大小，保持优雅 */
+    font-weight: bold;
+    text-align: center;
+    padding: 8px 15px; /* 增加内边距，提升点击体验 */
+    border-radius: 8px; /* 轻微圆角，符合现代设计 */
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+  
+  /* 悬停效果 */
+  .nav-bar a:hover {
+    color: #8D5B3A; /* 采用“大童”按钮的高亮颜色 */
+    transform: scale(1.05); /* 轻微放大，增加交互感 */
+  }
+  
+  /* 右侧选项区域 */
+  .nav-bar .nav-options {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+  
+  /* 下拉菜单 */
+  .nav-bar select {
+    background-color: #FFF;
+    color: #5A3E2B;
+    font-size: 16px;
+    padding: 6px 12px;
+    margin: 0 15px;
+    border: 2px solid #C09775;
+    border-radius: 6px;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+  
+  /* 下拉菜单悬停 */
+  .nav-bar select:hover {
+    border-color: #8D5B3A;
+    background-color: #F8E6D1;
+  }
+  
+  /* logo样式 */
+  .logo-container {
+    position: relative; /* 使 logo 随页面一起滚动 */
+    top: 0; /* 使其与导航栏对齐 */
+    left: 0;
+    padding: 10px;
+    border-radius: 15px; /* 可选：圆角效果 */
+}
+  
+  .logo-container h1 {
+    color: #ffffff;
+    font-size: 2rem;
+    margin: 0;
+  }
+  
+  /* 微信 */
+  .wechat-icon {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    font-size: 3rem;
+    color: #25D366;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }
+  
+  .wechat-icon:hover {
+    background-color: #25D366;
+    color: white;
+  }
+  
+  .wechat-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .wechat-modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+  }
+  
+  .wechat-modal img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 30px;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  /* 增大语言选择按钮 */
+  .nav-bar .language-select {
+    font-size: 1rem; /* 增大字体 */
+    padding: 8px 8px; /* 增加内边距 */
+    border-radius: 5px; /* 圆角边框 */
+    background-color: #fff; /* 设置背景颜色 */
+    color: #333; /* 设置字体颜色 */
+    border: 1px solid #ccc; /* 设置边框颜色 */
+  }
+  
+  /* 弹窗动画 */
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+
+/*---------------------------------------------- 英雄区 ----------------------------------------------*/
+.hero {
+  background: linear-gradient(to right, #f0e4d7, #d9a78b); /* 渐变背景色 */
+  padding: 100px 0;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-top: 10px;
+}
+
+/*---------------------------------------------- 品牌起源与理念 ----------------------------------------------*/
+#story {
+  padding: 60px 20px;
+}
+
+#story .section-title {
+  font-size: 2rem;
+  color: #8d5b3a;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.story-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.story-text {
+  width: 50%;
+  font-size: 1rem;
+  color: #333;
+}
+
+.story-img {
+  width: 45%;
+  border-radius: 8px;
+  object-fit: cover;
+  height: 100%;
+}
+
+/*---------------------------------------------- 实体店与荣誉 ----------------------------------------------*/
+#experience {
+  padding: 60px 20px;
+}
+
+.cards-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.info-card {
+  background: #f8e6d1;
+  padding: 20px;
+  border-radius: 10px;
+  width: 30%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.info-card h3 {
+  color: #8d5b3a;
+}
+
+.info-card p {
+  color: #5a3e2b;
+  font-size: 1rem;
+}
+
+/*---------------------------------------------- 我们的承诺 ----------------------------------------------*/
+#more-story {
+  padding: 60px 20px;
+}
+
+.story-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.story-text {
+  width: 50%;
+  font-size: 1rem;
+  color: #333;
+}
+
+.story-img {
+  width: 45%;
+  border-radius: 8px;
+  object-fit: cover;
+  height: 100%;
+}
+
+/*---------------------------------------------- 品牌传承与未来展望 ----------------------------------------------*/
+#heritage {
+  padding: 60px 20px;
+}
+
+.new-section {
+  padding: 60px 20px;
+}
+
+.new-section-title {
+  font-size: 2rem;
+  color: #8d5b3a;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.new-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.new-text {
+  width: 50%;
+  font-size: 1rem;
+  color: #333;
+}
+
+.new-img-wrapper {
+  width: 45%;
+}
+
+.new-img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  height: 100%;
+}
+
+/*---------------------------------------------- 社会责任与媒体见证 ----------------------------------------------*/
+#social-responsibility {
+  padding: 60px 20px;
+}
+
+.new-cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.new-card {
+  background: #f8e6d1;
+  padding: 20px;
+  border-radius: 10px;
+  width: 48%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.new-card h3 {
+  color: #8d5b3a;
+}
+
+.new-card p {
+  color: #5a3e2b;
+  font-size: 1rem;
+}
+
+/*---------------------------------------------- 品牌故事延伸—细节与匠心 ----------------------------------------------*/
+#details {
+  padding: 60px 20px;
+}
+
+.new-grid.reverse {
+  flex-direction: row-reverse;
+}
+
+.details-section .new-img-wrapper {
+  width: 45%;
+}
+
+.details-section .new-img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  height: 100%;
+}
+
+.details-section .new-text {
+  width: 50%;
+  font-size: 1rem;
+  color: #333;
+}
+
+/*---------------------------------------------- 结尾号召部分 ----------------------------------------------*/
+.cta {
+  background: #f3f3f3; /* 使用淡灰色背景，与页脚对比 */
+  padding: 80px 20px;
+  text-align: center;
+  border-bottom: 2px solid #d9a78b; /* 添加顶部边框，进一步分隔与页脚 */
+}
+
+.cta h2 {
+  font-size: 2.5rem;
+  color: #333; /* 深灰色字体，增加对比度 */
+  margin-bottom: 20px; /* 增加与下方文本的间距 */
+}
+
+.cta p {
+  font-size: 1.2rem;
+  color: #666; /* 使用较浅的灰色，避免过于突兀 */
+  margin-top: 10px;
+  margin-bottom: 20px; /* 增加与按钮的间距 */
+}
+
+.cta a {
+  display: inline-block;
+  margin-top: 20px;
+  background-color: #c8a27e; /* 温暖的米色背景 */
+  color: white;
+  padding: 12px 30px;
+  text-decoration: none;
+  border-radius: 30px; /* 更圆的按钮角，增加亲和力 */
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta a:hover {
+  background-color: #8d5b3a; /* 深色悬浮效果 */
+  transform: translateY(-3px); /* 添加轻微的向上浮动效果 */
+}
+
+.cta a:active {
+  transform: translateY(1px); /* 按钮被点击时的轻微下沉效果 */
+}
+
+
+   /*-------------------------------------------- 页脚 ---------------------------------------------*/
+/* 页脚整体设置 */
+footer {
+  background: linear-gradient(to right, #D9A78B, #C8A27E);
+  padding-bottom: 0;
+  margin-bottom: 0;
+  color: #fff;
+  font-size: 12px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5列布局 */
+  gap: 10px; /* 列间距 */
+}
+
+/* 公共列样式 */
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 左对齐，便于自由控制位置 */
+}
+
+/* 第一列：品牌信息 */
+.brand-info {
+  margin-bottom: 10px;
+  margin-top: -10px;
+  margin-left: 40px; /* 向右移动30px，可以根据需要调整数值 */
+}
+
+.brand-name {
+  font-size: 2rem; /* 品牌名称大一些 */
+  font-weight: bold;
+  color: #ffffff;
+  letter-spacing: 0px;
+  margin-bottom: 10px;
+}
+
+.contact {
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: -2px;
+}
+
+.service-time {
+  font-size: 14px;
+  color: #ffffff;
+}
+
+/* 社交媒体部分 */
+.social-media-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 默认左对齐，后面通过 .social-links 调整 */
+  margin-top: -30px;
+  grid-column: 5; /* 将社交媒体部分移到第五列 */
+}
+
+.social-heading {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 2.5px;
+  margin-right: auto;           /* 利用自动外边距将内容推到右侧 */
+  transform: translateX(40px); /* 可根据需要调整移动距离 */
+  color: #fff;
+}
+
+/* 将社交媒体链接容器整体向右移动 */
+.social-links {
+  display: flex;
+  gap: 1px;
+  margin-left: auto;           /* 利用自动外边距将内容推到右侧 */
+  transform: translateX(140px); /* 可根据需要调整移动距离 */
+}
+
+.social-item {
+  display: inline-block;
+  font-weight: bold;
+  margin-right: 30px;
+  position: relative;
+  cursor: pointer;
+  margin-top: -27px;
+}
+
+/* 给三个软件名称增加特别样式 */
+.social-text {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.85); /* 奶白色 */
+  color: #8D5B3A; /* 奶咖色文字 */
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 悬停效果 */
+.social-text:hover {
+  background-color: #C8A27E;
+  color: white;
+  transform: scale(1.05);
+}
+
+
+/* 鼠标悬停时显示二维码 */
+.social-item:hover .qr-code {
+  display: block;
+}
+
+/* 二维码样式 */
+.qr-code {
+  position: absolute;
+  bottom: 110%;  /* 向上显示 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 100px;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+}
+
+.qr-code img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+/* 第二、三、四列：功能性导航链接 */
+.footer-nav {
+  margin-top: 20px; /* 为导航添加顶部间距，确保内容不贴近顶部 */
+  padding-top: 10px; /* 如果需要额外的空隙，也可以使用 padding-top */
+}
+
+.footer-nav p {
+  margin: 3px 0;
+}
+
+.footer-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-nav a:hover {
+  color: #8D5B3A;
+}
+
+/* 第二、三、四列一起右移 */
+.footer-column:nth-child(n+2):nth-child(-n+4) {
+  transform: translateX(160px);
+}
+
+
+/* 底部版权信息 */
+.footer-bottom {
+  grid-column: 1 / -1;
+  padding: 0; /* 去掉原来的上下 padding */
+  margin: 0;  /* 避免额外空隙 */
+}
+
+.footer-bottom hr {
+  margin: 0; /* 横线和上方内容之间不留空 */
+  border: 1px solid #fff;
+}
+
+.footer-bottom-text {
+  font-size: 12px;
+  color: #fff;
+  line-height: 1.6;
+  padding: 6px 0 4px;        /* 上下留白控制 */
+  margin-left: 40px;         /* 向右移动整体文字内容 */
+  text-align: left;          /* 如需文字左对齐 */
+}
+
+.footer-bottom-text a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 8px;
+}
+
+.footer-bottom-text a:hover {
+  color: #8D5B3A;
+}

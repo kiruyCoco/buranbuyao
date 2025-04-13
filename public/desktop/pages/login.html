@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <!-- 引入 Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>品牌产品</title>
+  <link rel="stylesheet" href="../assets/css/login.css">
+</head>
+<style>
+  /* 加载动画样式 */
+  #loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);  /* 半透明背景 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+
+  /* 旋转的动画 */
+  .spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #FFB6C1;  /* 粉色旋转 */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+  }
+
+  /* 旋转动画 */
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
+</head>
+<body>
+<!-- 加载动画容器 -->
+<div id="loader" class="loader">
+  <div class="spinner"></div>
+</div>
+
+<script>
+  window.onload = function() {
+    // 页面加载完毕后隐藏加载动画
+    document.getElementById('loader').style.display = 'none';
+  };
+</script>
+
+<!---------------------------------------------- 折纸飘落效果 ---------------------------------------------------------------->
+<script>
+  const colors = ['#FFB6C1', '#FFDAB9', '#E6E6FA', '#FFFACD', '#D8BFD8'];
+  function createPaper() {
+    const paper = document.createElement('div');
+    paper.className = 'paper';
+    paper.style.left = Math.random() * 100 + 'vw';
+    paper.style.animationDuration = (Math.random() * 3 + 3) + 's';
+    paper.style.background = colors[Math.floor(Math.random() * colors.length)];
+    document.body.appendChild(paper);
+
+    setTimeout(() => {
+      paper.remove();
+    }, 6000);
+  }
+  setInterval(createPaper, 300);
+</script>
+ 
+ <!-- 导航栏 -->
+ <div class="nav-bar">
+      <!-- logo -->
+  <div class="logo-container">
+    <h1>Buranbuyao</h1>
+  </div>
+    <a href="home.html">首页</a>
+    <a href="story.html">品牌故事</a>
+    <a href="product.html">品牌产品</a>
+    <a href="#Contactus">联系我们</a>
+    <a href="#phone"><i class="fas fa-phone-alt"></i> +86 15957430935</a>
+    <a href="#envelope"><i class="fas fa-envelope"></i> service@buranbuyao.com</a>
+    <a href="login.html">登录/注册</a>
+    <div class="nav-options">
+      <select class="language-select">
+        <option value="cn">中文</option>
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+      </select>
+    </div>
+  </div>
+ <!-- 主要内容区域 -->
+ <main>
+  <div class="login-wrapper">
+    <div class="login-box">
+      <!-- 左侧：客服微信区域 -->
+      <div class="box-left">
+        <h3>联系客服</h3>
+        <p>获得邀请码，查看更多精彩内容</p>
+        <img src="https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/WechatYang.jpg" alt="微信二维码" />
+      </div>
+
+      <!-- 右侧：登录区域 -->
+      <div class="box-right">
+        <h2>欢迎回来</h2>
+        <form id="login-form">
+          <div class="form-group">
+            <label for="phone">手机号/用户名</label>
+            <input type="text" id="phone" name="phone" required placeholder="请输入手机号或用户名" />
+          </div>
+          <div class="form-group">
+            <label for="password">密码</label>
+            <input type="password" id="password" name="password" required />
+          </div>
+          <button type="submit" class="login-btn">登录</button>
+        </form>
+        <div class="bottom-text">
+          还没有账户？<a href="register.html">点击注册</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+ <!-- 微信图标 -->
+ <a href="javascript:void(0);" class="wechat-icon" onclick="openWechatModal()">
+  <i class="fab fa-weixin"></i>
+</a>
+
+<!-- 微信弹窗 -->
+<div id="wechatModal" class="wechat-modal">
+  <div class="wechat-modal-content">
+    <span class="close" onclick="closeWechatModal()">&times;</span>
+    <h2>扫描二维码添加我为好友</h2>
+    <img src="https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/WechatYang.jpg" alt="微信二维码" />
+    <p>微信号：buranbuyao1</p>
+  </div>
+</div>
+
+
+<footer>
+  <!-- 第一列：品牌信息和社交媒体（文字方式） -->
+  <div class="footer-column">
+    <div class="brand-info">
+      <p class="brand-name">Buranbuyao</p>
+      <p class="contact">电话：+86 15957430935</p>
+      <p class="service-time">服务时间：08:30-23:00</p>
+    </div>
+    <div class="social-media-icons">
+      <p class="social-heading">关注我们：</p>
+      <div class="social-links">
+        <div class="social-item">
+          <span class="social-text">抖音</span>
+          <div class="qr-code">
+            <img src="https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/footer/douyin.png" alt="抖音二维码">
+          </div>
+        </div>
+        <div class="social-item">
+          <span class="social-text">小红书</span>
+          <div class="qr-code">
+            <img src="https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/footer/xiaohongshu.png" alt="小红书二维码">
+          </div>
+        </div>
+        <div class="social-item">
+          <span class="social-text">微信</span>
+          <div class="qr-code">
+            <img src="https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/footer/weixin.jpg" alt="微信二维码">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第二列：功能性导航链接 -->
+  <div class="footer-column">
+    <div class="footer-nav">
+      <p><a href="#">帮助中心</a></p>
+      <p><a href="#">购买指南</a></p>
+      <p><a href="#">常见问题</a></p>
+      <p><a href="#">联系我们</a></p>
+      <p><a href="#">网站政策</a></p>
+    </div>
+  </div>
+
+  <!-- 第三列：功能性导航链接 -->
+  <div class="footer-column">
+    <div class="footer-nav">
+      <p><a href="#">网站政策</a></p>
+      <p><a href="#">隐私政策</a></p>
+      <p><a href="#">使用条款</a></p>
+      <p><a href="#">销售条款</a></p>
+      <p><a href="#">公司声明</a></p>
+    </div>
+  </div>
+
+  <!-- 第四列：品牌相关链接 -->
+  <div class="footer-column">
+    <div class="footer-nav">
+      <p><a href="#">Buranbuyao品牌</a></p>
+      <p><a href="#">关于我们</a></p>
+      <p><a href="#">会员权益</a></p>
+      <p><a href="#">工作机会</a></p>
+      <p><a href="#">精选门店</a></p>
+    </div>
+  </div>
+
+  <!-- 底部版权信息 -->
+  <div class="footer-bottom">
+    <hr>
+    <div class="footer-bottom-text">
+      <p>
+        <a href="#">隐私政策</a>
+        <a href="#">使用条款</a>
+        浙江布染布妖童装服饰有限公司所有 ©2025 Buranbuyao  
+        电子营业执照 沪公网安备33022520040902号 浙ICP备170728号
+      </p>
+    </div>
+  </div>
+</footer>
+
+  <script src="../assets/js/login.js"></script>
+</body>
+</html>

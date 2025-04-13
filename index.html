@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>首页</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+    .container {
+      text-align: center;
+    }
+    .title {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .message {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="title">欢迎来到我们的站点</div>
+    <div class="message">我们会根据您的设备跳转到相应的版本：</div>
+    <div id="deviceMessage"></div>
+
+    <script>
+      // 检测设备类型，判断是桌面端还是移动端
+      const userAgent = navigator.userAgent.toLowerCase();
+      const isMobile = /mobile/i.test(userAgent);
+      const deviceMessageElement = document.getElementById('deviceMessage');
+      const desktopHome = 'public/desktop/pages/home.html';
+      const mobileHome = 'public/mobile/pages/home.html';
+
+      if (isMobile) {
+        deviceMessageElement.innerHTML = '检测到您使用的是移动设备，正在跳转到移动端首页...';
+        setTimeout(() => {
+          window.location.href = mobileHome; // 跳转到移动端首页
+        }, 2000); // 延时 2 秒后跳转
+      } else {
+        deviceMessageElement.innerHTML = '检测到您使用的是桌面设备，正在跳转到桌面端首页...';
+        setTimeout(() => {
+          window.location.href = desktopHome; // 跳转到桌面端首页
+        }, 2000); // 延时 2 秒后跳转
+      }
+    </script>
+  </div>
+
+</body>
+</html>
