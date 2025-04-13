@@ -1,78 +1,65 @@
-/* 确保 body 和 html 充满视口 */
-body, html {
+html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  display: flex;
-  flex-direction: column;
   min-height: 100vh;
-  font-family: "Noto Sans", Arial, sans-serif;
-}
-
-/* 页脚的底部内容 */
-body {
-  padding-top: 80px; /* 给页面内容留出空间，避免被固定的导航栏遮挡 */
   display: flex;
   flex-direction: column;
-  flex: 1; /* 让 body 占满剩余的空间 */
+  font-family: "Noto Sans", Arial, sans-serif;
+  background: linear-gradient(to right, #f8e4e4, #ffe8d6);
+  justify-content: center;
+  align-items: center;
+}
+body {
+  /* 为固定导航栏留出顶部空间 */
+  padding-top: 80px;
+  flex: 1;
 }
 
-/* 让页面主内容区域填充剩余空间 */
+/* 主要内容区域 */
 main {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
   width: 100%;
-}
-
-/* 页面背景 */
-body {
-  background: linear-gradient(to right, #f8e4e4, #ffe8d6);
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  margin: 0;
-}
-
-/* 防止内容被固定的导航栏遮挡 */
-main {
+  margin-top: 20px;
+  /* 防止固定导航栏遮挡主内容 */
   padding-top: 100px;
 }
-/* 加载动画样式 */
+
+/*-----------------------------------------------------------
+  加载动画样式
+-----------------------------------------------------------*/
 #loader {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.8);  /* 半透明背景 */
+  background-color: rgba(255, 255, 255, 0.8); /* 半透明背景 */
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
 }
-
-/* 旋转的动画 */
 .spinner {
   border: 4px solid #f3f3f3;
-  border-top: 4px solid #FFB6C1;  /* 粉色旋转 */
+  border-top: 4px solid #FFB6C1; /* 粉色旋转 */
   border-radius: 50%;
   width: 50px;
   height: 50px;
   animation: spin 2s linear infinite;
 }
-
-/* 旋转动画 */
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-
-/*---------------------------------------------- 折纸飘落效果 ----------------------------------------------------------------*/
+/*-----------------------------------------------------------
+  折纸飘落效果
+-----------------------------------------------------------*/
 .paper {
   position: fixed;
   top: -2vh;
@@ -84,7 +71,6 @@ main {
   z-index: 9999;
   border-radius: 2px;
 }
-
 @keyframes fallPaper {
   0% {
     transform: translateY(0) rotate(0deg);
@@ -96,12 +82,15 @@ main {
   }
 }
 
-/* 导航栏 */
+/*-----------------------------------------------------------
+  导航栏
+-----------------------------------------------------------*/
 .nav-bar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  /* 建议设置明确的高度，便于页面计算与遮挡处理 */
   background: linear-gradient(to right, #D9A78B, #C8A27E);
   padding: 2px 30px;
   z-index: 1000;
@@ -112,11 +101,9 @@ main {
   box-sizing: border-box;
   border-bottom: 3px solid #C09775;
   white-space: nowrap;
-  overflow-x: auto; /* 横向滚动 */
+  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
-
-/* 导航栏文字样式 */
 .nav-bar a {
   color: white;
   text-decoration: none;
@@ -128,22 +115,16 @@ main {
   border-radius: 8px;
   transition: color 0.3s ease, transform 0.2s ease;
 }
-
-/* 悬停效果 */
 .nav-bar a:hover {
   color: #8D5B3A;
   transform: scale(1.05);
 }
-
-/* 右侧选项区域 */
 .nav-bar .nav-options {
   display: flex;
   align-items: center;
   margin-left: auto;
-  flex-shrink: 0; /* 防止右侧内容区域被压缩 */
+  flex-shrink: 0;
 }
-
-/* 下拉菜单 */
 .nav-bar select {
   background-color: #FFF;
   color: #5A3E2B;
@@ -155,29 +136,25 @@ main {
   outline: none;
   transition: all 0.3s ease;
 }
-
-/* 下拉菜单悬停 */
 .nav-bar select:hover {
   border-color: #8D5B3A;
   background-color: #F8E6D1;
 }
-
-/* logo样式 */
+/* Logo样式 */
 .logo-container {
   position: relative;
-  top: 0;
-  left: 0;
   padding: 10px;
   border-radius: 15px;
 }
-
 .logo-container h1 {
   color: #ffffff;
   font-size: 2rem;
   margin: 0;
 }
 
-/* 微信 */
+/*-----------------------------------------------------------
+  微信和弹窗
+-----------------------------------------------------------*/
 .wechat-icon {
   position: fixed;
   bottom: 50px;
@@ -190,12 +167,10 @@ main {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
 }
-
 .wechat-icon:hover {
   background-color: #25D366;
   color: white;
 }
-
 .wechat-modal {
   display: none;
   position: fixed;
@@ -208,7 +183,6 @@ main {
   justify-content: center;
   align-items: center;
 }
-
 .wechat-modal-content {
   background-color: #fff;
   padding: 20px;
@@ -216,12 +190,10 @@ main {
   text-align: center;
   width: 300px;
 }
-
 .wechat-modal img {
   width: 100%;
   height: auto;
 }
-
 .close {
   position: absolute;
   top: 5px;
@@ -231,24 +203,21 @@ main {
   cursor: pointer;
 }
 
-/* 增大语言选择按钮 */
+/*-----------------------------------------------------------
+  语言选择按钮（增大样式）
+-----------------------------------------------------------*/
 .nav-bar .language-select {
-  font-size: 1rem; /* 增大字体 */
-  padding: 8px 8px; /* 增加内边距 */
-  border-radius: 5px; /* 圆角边框 */
-  background-color: #fff; /* 设置背景颜色 */
-  color: #333; /* 设置字体颜色 */
-  border: 1px solid #ccc; /* 设置边框颜色 */
+  font-size: 1rem;
+  padding: 8px 8px;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ccc;
 }
 
-/* 弹窗动画 */
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-
-/* 背景轮播容器 */
+/*-----------------------------------------------------------
+  背景轮播
+-----------------------------------------------------------*/
 .background {
   position: relative;
   width: 100%;
@@ -256,14 +225,11 @@ main {
   overflow: hidden;
   margin: 0;
 }
-
-/* 轮播图片容器 */
 .background-slides {
   display: flex;
   transition: transform 1s ease-in-out;
   height: 100%;
 }
-
 .background-slide {
   min-width: 100%;
   height: 100%;
@@ -271,7 +237,7 @@ main {
   background-position: center;
 }
 
-/* 小圆点容器 */
+/* 小圆点 */
 .dots-container {
   position: absolute;
   bottom: 10px;
@@ -280,7 +246,6 @@ main {
   display: flex;
   gap: 10px;
 }
-
 .dot {
   width: 10px;
   height: 10px;
@@ -289,11 +254,9 @@ main {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
 .dot.active {
   background-color: white;
 }
-
 /* 左右切换箭头 */
 .prev-arrow, .next-arrow {
   position: absolute;
@@ -306,16 +269,10 @@ main {
   border-radius: 50%;
   cursor: pointer;
   z-index: 10;
+  transition: background-color 0.3s ease;
 }
-
-.prev-arrow {
-  left: 10px;
-}
-
-.next-arrow {
-  right: 10px;
-}
-
+.prev-arrow { left: 10px; }
+.next-arrow { right: 10px; }
 .prev-arrow:hover, .next-arrow:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
@@ -330,43 +287,34 @@ main {
   text-align: center;
   z-index: 1;
 }
-
 .text-overlay h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
 }
-
 .text-overlay p {
   font-size: 1.5rem;
 }
 
-/* 我们的产品标题背景色 */
+/*-----------------------------------------------------------
+  产品相关样式
+-----------------------------------------------------------*/
+/* 产品标题，背景及装饰 */
 .product-title {
   background-color: #f8f4e2;
-  padding: 50px 20px;
   text-align: center;
-}
-
-/* 我们的产品标题样式 */
-.product-title {
-  font-family: 'Arial', sans-serif; /* 使用相同字体 */
-  font-size: 3rem; /* 增大字体 */
-  font-weight: bold; /* 加粗字体 */
-  color: #8B4513; /* 使用品牌色 */
-  text-align: center;
-  letter-spacing: 2px; /* 字间距 */
-  text-transform: uppercase; /* 大写字母 */
-  padding: 20px 0; /* 添加上下内边距 */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 文字阴影 */
+  font-family: 'Arial', sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #8B4513;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 20px 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, color 0.3s ease;
-  
 }
-
 .product-title:hover {
-  transform: translateY(-5px); /* 鼠标悬停时轻微上移 */
+  transform: translateY(-5px);
 }
-
-/* 添加装饰性边框 */
 .product-title::before {
   content: "";
   display: block;
@@ -376,8 +324,6 @@ main {
   margin: 20px auto 10px;
   border-radius: 5px;
 }
-
-
 /* 产品容器 */
 .products-container {
   display: flex;
@@ -387,107 +333,87 @@ main {
   margin: 0 auto;
   max-width: 1200px;
 }
-
 /* 单个产品项 */
 .product-item {
   background-color: #fff;
   padding: 20px;
-  width: 20%;  /* 使每个产品项并排显示 */
+  width: 20%;
   border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   text-align: center;
   flex-grow: 1;
 }
-
-/* 产品项图片样式 */
 .product-item img {
   width: 100%;
   height: auto;
   border-radius: 10px;
-  transition: transform 0.3s ease;  /* 平滑过渡效果 */
-  cursor: pointer;              /* 鼠标悬停时显示可点击的手形 */
+  transition: transform 0.3s ease;
+  cursor: pointer;
 }
-
-/* 鼠标悬停时，图片放大 */
 .product-item:hover img {
-  transform: scale(1.1);  /* 放大10% */
+  transform: scale(1.1);
 }
-
 .product-item p {
   margin-top: 15px;
   font-size: 1.2rem;
   color: #333;
 }
-
-/* 产品季节文字样式 */
+/* 产品季节文字 */
 .product-season {
-  font-size: 2.5rem !important;  /* 增大字体大小 */
-  color: #80591af3;        /* 默认颜色 */
-  margin-top: 1px;         /* 设置文字与图片之间的距离 */
-  font-weight: bold;       /* 设置文字加粗 */
-  text-align: center;      /* 使文字居中对齐 */
-  transition: color 0.3s ease; /* 平滑过渡效果 */
-  cursor: pointer;              /* 鼠标悬停时显示可点击的手形 */
+  font-size: 2.5rem !important;
+  color: #80591af3;
+  margin-top: 1px;
+  font-weight: bold;
+  text-align: center;
+  transition: color 0.3s ease;
+  cursor: pointer;
 }
-
-/* 鼠标悬停时的效果 */
 .product-item:hover .product-season {
-  color: #f8c73e; /* 鼠标悬停时的颜色 */
+  color: #f8c73e;
 }
-
-
-/* 查看更多按钮容器样式 */
+/* 查看更多按钮 */
 .btn-container {
   display: flex;
-  justify-content: center; /* 水平居中 */
-  align-items: center; /* 垂直居中 */
+  justify-content: center;
+  align-items: center;
   margin-top: 20px;
 }
-
-/* 查看更多按钮样式 */
 .btn-see-more {
-  background-color: #f8c73e; /* 按钮背景色 */
-  color: white; /* 按钮文字颜色 */
-  padding: 15px 30px; /* 按钮内边距 */
-  font-size: 1.5rem; /* 字体大小 */
-  font-weight: bold; /* 让字体加粗 */
+  background-color: #f8c73e;
+  color: white;
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  font-weight: bold;
   border: none;
-  border-radius: 6px; /* 圆角效果 */
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease; /* 过渡效果 */
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
-
 .btn-see-more:hover {
-  background-color: #ff6f61; /* 悬停时背景色 */
-  transform: scale(1.1); /* 悬停时放大 */
+  background-color: #ff6f61;
+  transform: scale(1.1);
 }
 
-/* 门店形象标题背景色 */
+/*-----------------------------------------------------------
+  门店部分
+-----------------------------------------------------------*/
 .store-title {
   padding: 50px 0;
   background-color: #f6dba9;
   text-align: center;
-}
-
-/* 门店形象标题样式 */
-.store-title {
-  font-family: 'Arial', sans-serif; /* 使用相同字体 */
-  font-size: 3rem; /* 增大字体 */
-  font-weight: bold; /* 加粗字体 */
-  color: #8B4513; /* 使用品牌色 */
-  text-align: center;
-  letter-spacing: 2px; /* 字间距 */
-  text-transform: uppercase; /* 大写字母 */
-  padding: 20px 0; /* 添加上下内边距 */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 文字阴影 */
+  font-family: 'Arial', sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #8B4513;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 20px 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, color 0.3s ease;
 }
-
 .store-title:hover {
-  transform: translateY(-5px); /* 鼠标悬停时轻微上移 */
+  transform: translateY(-5px);
 }
-
-/* 添加装饰性边框 */
 .store-title::before {
   content: "";
   display: block;
@@ -497,181 +423,80 @@ main {
   margin: 20px auto 10px;
   border-radius: 5px;
 }
-
 .store-carousel-wrapper {
   position: relative;
-  width: 70%;  /* 控制宽度，左右留空 */
-  margin: 0 auto;  /* 居中 */
+  width: 70%;
+  margin: 0 auto;
   overflow: hidden;
   border-radius: 10px;
   background-color: #eee;
 }
-
 .store-carousel {
   display: flex;
   transition: transform 0.8s ease;
 }
-
 .store-slide {
   min-width: 100%;
-  height: 600px;  /* 可以根据图片比例调整 */
+  height: 600px;
   background-size: cover;
   background-position: center;
 }
-
 .store-prev-arrow, .store-next-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   font-size: 2rem;
   color: white;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0,0,0,0.5);
   padding: 10px;
   border-radius: 50%;
   cursor: pointer;
   z-index: 10;
   transition: background-color 0.3s ease;
 }
-
-.store-prev-arrow {
-  left: 10px;
-}
-
-.store-next-arrow {
-  right: 10px;
-}
-
+.store-prev-arrow { left: 10px; }
+.store-next-arrow { right: 10px; }
 .store-prev-arrow:hover, .store-next-arrow:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0,0,0,0.8);
 }
-
-/* 小圆点容器 */
 .store-dots-container {
   margin-top: 15px;
   display: flex;
   justify-content: center;
   gap: 8px;
 }
-
 .store-dot {
   width: 10px;
   height: 10px;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0,0,0,0.4);
   border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
 .store-dot.active {
   background-color: #333;
 }
-/* 加盟优势标题背景色 */
+
+/*-----------------------------------------------------------
+  加盟优势部分
+-----------------------------------------------------------*/
 .franchise-title {
   text-align: center;
   padding: 50px 20px;
   background-color: #ffd0cbd1;
-}
-
-
-.factory-video-container {
-  max-width: 80%;
-  margin: 0 auto;
-}
-
-.factory-video {
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.franchise-content {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 30px;
-}
-
-.franchise-item {
-  background-color: white;
-  padding: 20px;
-  width: 45%;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.franchise-item h3 {
+  font-family: 'Arial', sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
   color: #8B4513;
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-}
-
-.franchise-item p {
-  font-size: 1.2rem;
-  color: #555;
-}
-
-/* 商标图片样式 */
-.trademark-certificates {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
-  gap: 5px; /* 添加间距，让图片之间有一定的空隙 */
-}
-
-.trademark-img {
-  max-width: 30%; /* 设置最大宽度为容器的45%，避免图片过大 */
-  height: auto; /* 保持图片比例 */
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  object-fit: contain; /* 确保图片在框内自适应 */
-}
-
-
-/* 立即加盟按钮容器样式 */
-.btn-container {
-  display: flex;
-  justify-content: center; /* 水平居中 */
-  align-items: center; /* 垂直居中 */
-  margin-top: 20px;
-}
-
-/* 立即加盟按钮样式 */
-.btn-join-now {
-  background-color: #f8c73e; /* 按钮背景色 */
-  color: white; /* 按钮文字颜色 */
-  padding: 15px 30px; /* 按钮内边距 */
-  font-size: 1.5rem; /* 字体大小 */
-  font-weight: bold; /* 让字体加粗 */
-  border: none;
-  border-radius: 6px; /* 圆角效果 */
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease; /* 过渡效果 */
-}
-
-.btn-join-now:hover {
-  background-color: #ff6f61; /* 悬停时背景色 */
-  transform: scale(1.1); /* 悬停时放大 */
-}
-
-
-/* 加盟优势标题样式 */
-.franchise-title {
-  font-family: 'Arial', sans-serif; /* 使用相同字体 */
-  font-size: 3rem; /* 增大字体 */
-  font-weight: bold; /* 加粗字体 */
-  color: #8B4513; /* 使用品牌色 */
-  text-align: center;
-  letter-spacing: 2px; /* 字间距 */
-  text-transform: uppercase; /* 大写字母 */
-  padding: 20px 0; /* 添加上下内边距 */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 文字阴影 */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 20px 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, color 0.3s ease;
 }
-
 .franchise-title:hover {
-  transform: translateY(-5px); /* 鼠标悬停时轻微上移 */
+  transform: translateY(-5px);
 }
-
-/* 添加装饰性边框 */
 .franchise-title::before {
   content: "";
   display: block;
@@ -681,79 +506,119 @@ main {
   margin: 20px auto 10px;
   border-radius: 5px;
 }
+.franchise-content {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+.franchise-item {
+  background-color: white;
+  padding: 20px;
+  width: 45%;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.franchise-item h3 {
+  color: #8B4513;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+.franchise-item p {
+  font-size: 1.2rem;
+  color: #555;
+}
 
-  /*-------------------------------------------- 页脚 ---------------------------------------------*/
-/* 页脚整体设置 */
+/*-----------------------------------------------------------
+  商标及立即加盟部分
+-----------------------------------------------------------*/
+.trademark-certificates {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  gap: 5px;
+}
+.trademark-img {
+  max-width: 30%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  object-fit: contain;
+}
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.btn-join-now {
+  background-color: #f8c73e;
+  color: white;
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.btn-join-now:hover {
+  background-color: #ff6f61;
+  transform: scale(1.1);
+}
+
+/*-----------------------------------------------------------
+  页脚
+-----------------------------------------------------------*/
 footer {
   background: linear-gradient(to right, #D9A78B, #C8A27E);
-  padding-bottom: 0;
-  margin-bottom: 0;
+  padding: 0;
+  margin: 0;
   color: #fff;
   font-size: 12px;
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5列布局 */
-  gap: 10px; /* 列间距 */
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  width: 100%;
+  align-self: stretch;
+  margin-top: auto;
 }
-
-/* 公共列样式 */
 .footer-column {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* 左对齐，便于自由控制位置 */
+  align-items: flex-start;
 }
-
-/* 第一列：品牌信息 */
 .brand-info {
-  margin-bottom: 10px;
-  margin-top: -10px;
-  margin-left: 40px; /* 向右移动30px，可以根据需要调整数值 */
+  margin: -10px 0 10px 40px;
 }
-
 .brand-name {
-  font-size: 2rem; /* 品牌名称大一些 */
+  font-size: 2rem;
   font-weight: bold;
   color: #ffffff;
-  letter-spacing: 0px;
   margin-bottom: 10px;
 }
-
-.contact {
+.contact, .service-time {
   font-size: 14px;
   color: #fff;
-  margin-bottom: -2px;
 }
-
-.service-time {
-  font-size: 14px;
-  color: #ffffff;
-}
-
-/* 社交媒体部分 */
 .social-media-icons {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* 默认左对齐，后面通过 .social-links 调整 */
+  align-items: flex-start;
   margin-top: -30px;
-  grid-column: 5; /* 将社交媒体部分移到第五列 */
+  grid-column: 5;
 }
-
 .social-heading {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 2.5px;
-  margin-right: auto;           /* 利用自动外边距将内容推到右侧 */
-  transform: translateX(40px); /* 可根据需要调整移动距离 */
+  transform: translateX(40px);
   color: #fff;
 }
-
-/* 将社交媒体链接容器整体向右移动 */
 .social-links {
   display: flex;
   gap: 1px;
-  margin-left: auto;           /* 利用自动外边距将内容推到右侧 */
-  transform: translateX(140px); /* 可根据需要调整移动距离 */
+  transform: translateX(140px);
 }
-
 .social-item {
   display: inline-block;
   font-weight: bold;
@@ -762,36 +627,28 @@ footer {
   cursor: pointer;
   margin-top: -27px;
 }
-
-/* 给三个软件名称增加特别样式 */
 .social-text {
   display: inline-block;
   padding: 3px 10px;
   border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.85); /* 奶白色 */
-  color: #8D5B3A; /* 奶咖色文字 */
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #8D5B3A;
   font-size: 14px;
   font-weight: bold;
   transition: all 0.3s ease;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
-
-/* 悬停效果 */
 .social-text:hover {
   background-color: #C8A27E;
   color: white;
   transform: scale(1.05);
 }
-
-/* 鼠标悬停时显示二维码 */
 .social-item:hover .qr-code {
   display: block;
 }
-
-/* 二维码样式 */
 .qr-code {
   position: absolute;
-  bottom: 110%;  /* 向上显示 */
+  bottom: 110%;
   left: 50%;
   transform: translateX(-50%);
   width: 100px;
@@ -800,50 +657,39 @@ footer {
   background-color: rgba(0, 0, 0, 0.7);
   border-radius: 10px;
 }
-
 .qr-code img {
   width: 100%;
   height: 100%;
   border-radius: 8px;
 }
-
-/* 第二、三、四列：功能性导航链接 */
 .footer-nav {
-  margin-top: 20px; /* 为导航添加顶部间距，确保内容不贴近顶部 */
-  padding-top: 10px; /* 如果需要额外的空隙，也可以使用 padding-top */
+  margin-top: 20px;
+  padding-top: 10px;
 }
-
 .footer-nav p {
   margin: 3px 0;
 }
-
 .footer-nav a {
   color: #fff;
   text-decoration: none;
   font-size: 14px;
 }
-
 .footer-nav a:hover {
   color: #8D5B3A;
 }
-
-/* 第二、三、四列一起右移 */
+/* 将 2-4 列右移 */
 .footer-column:nth-child(n+2):nth-child(-n+4) {
   transform: translateX(160px);
 }
-
-/* 底部版权信息 */
 .footer-bottom {
   grid-column: 1 / -1;
   padding: 0;
   margin: 0;
 }
-
 .footer-bottom hr {
   margin: 0;
   border: 1px solid #fff;
 }
-
 .footer-bottom-text {
   font-size: 12px;
   color: #fff;
@@ -852,19 +698,11 @@ footer {
   margin-left: 40px;
   text-align: left;
 }
-
 .footer-bottom-text a {
   color: #fff;
   text-decoration: none;
   margin-right: 8px;
 }
-
 .footer-bottom-text a:hover {
   color: #8D5B3A;
-}
-
-footer {
-  width: 100%;
-  align-self: stretch;
-  margin-top: auto;
 }
