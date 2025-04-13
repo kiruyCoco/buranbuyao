@@ -1,33 +1,45 @@
+/* 确保 body 和 html 充满视口 */
 body, html {
   margin: 0;
   padding: 0;
   height: 100%;
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* 确保页面高度至少为视口高度 */
-  margin: 0;
-  font-family: "Noto Sans", Arial, sans-serif; /* 使用更有质感的字体 */
+  min-height: 100vh;
+  font-family: "Noto Sans", Arial, sans-serif;
 }
 
-/* 将主要内容区域置于页面中央 */
+/* 页脚的底部内容 */
+body {
+  padding-top: 80px; /* 给页面内容留出空间，避免被固定的导航栏遮挡 */
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* 让 body 占满剩余的空间 */
+}
+
+/* 让页面主内容区域填充剩余空间 */
 main {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* 主要内容垂直居中 */
-  align-items: center;     /* 水平居中 */
-  margin-top: 250px;
-  margin-bottom: 50px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
   width: 100%;
 }
 
-/* 背景样式 */
+/* 页面背景 */
 body {
   background: linear-gradient(to right, #f8e4e4, #ffe8d6);
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   margin: 0;
+}
+
+/* 防止内容被固定的导航栏遮挡 */
+main {
+  padding-top: 100px;
 }
 
 /* 加载动画样式 */
@@ -102,23 +114,43 @@ border-radius: 2px;
 }
 
 
+/* 导航栏 */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to right, #D9A78B, #C8A27E);
+  padding: 2px 30px;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  border-bottom: 3px solid #C09775;
+  white-space: nowrap;
+  overflow-x: auto; /* 横向滚动 */
+  -webkit-overflow-scrolling: touch;
+}
+
 /* 导航栏文字样式 */
 .nav-bar a {
   color: white;
   text-decoration: none;
   margin: 0 25px;
-  font-size: 17px; /* 适中的字体大小，保持优雅 */
+  font-size: 17px;
   font-weight: bold;
   text-align: center;
-  padding: 8px 15px; /* 增加内边距，提升点击体验 */
-  border-radius: 8px; /* 轻微圆角，符合现代设计 */
+  padding: 8px 15px;
+  border-radius: 8px;
   transition: color 0.3s ease, transform 0.2s ease;
 }
 
 /* 悬停效果 */
 .nav-bar a:hover {
-  color: #8D5B3A; /* 采用“大童”按钮的高亮颜色 */
-  transform: scale(1.05); /* 轻微放大，增加交互感 */
+  color: #8D5B3A;
+  transform: scale(1.05);
 }
 
 /* 右侧选项区域 */
@@ -126,6 +158,7 @@ border-radius: 2px;
   display: flex;
   align-items: center;
   margin-left: auto;
+  flex-shrink: 0; /* 防止右侧内容区域被压缩 */
 }
 
 /* 下拉菜单 */
@@ -149,11 +182,11 @@ border-radius: 2px;
 
 /* logo样式 */
 .logo-container {
-  position: relative; /* 使 logo 随页面一起滚动 */
-  top: 0; /* 使其与导航栏对齐 */
+  position: relative;
+  top: 0;
   left: 0;
   padding: 10px;
-  border-radius: 15px; /* 可选：圆角效果 */
+  border-radius: 15px;
 }
 
 .logo-container h1 {
@@ -461,7 +494,6 @@ footer {
   transform: scale(1.05);
 }
 
-
 /* 鼠标悬停时显示二维码 */
 .social-item:hover .qr-code {
   display: block;
@@ -511,16 +543,15 @@ footer {
   transform: translateX(160px);
 }
 
-
 /* 底部版权信息 */
 .footer-bottom {
   grid-column: 1 / -1;
-  padding: 0; /* 去掉原来的上下 padding */
-  margin: 0;  /* 避免额外空隙 */
+  padding: 0;
+  margin: 0;
 }
 
 .footer-bottom hr {
-  margin: 0; /* 横线和上方内容之间不留空 */
+  margin: 0;
   border: 1px solid #fff;
 }
 
@@ -528,9 +559,9 @@ footer {
   font-size: 12px;
   color: #fff;
   line-height: 1.6;
-  padding: 6px 0 4px;        /* 上下留白控制 */
-  margin-left: 40px;         /* 向右移动整体文字内容 */
-  text-align: left;          /* 如需文字左对齐 */
+  padding: 6px 0 4px;
+  margin-left: 40px;
+  text-align: left;
 }
 
 .footer-bottom-text a {
@@ -546,5 +577,5 @@ footer {
 footer {
   width: 100%;
   align-self: stretch;
-  margin-top: auto; /* 自动推到底部 */
+  margin-top: auto;
 }
