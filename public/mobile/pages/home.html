@@ -149,26 +149,55 @@
     </div>
   </footer>
   <script src="../assets/js/home.js" defer></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const colors = ['#FFB6C1', '#FFDAB9', '#E6E6FA', '#FFFACD', '#D8BFD8'];
+  <style>
+    /* 折纸飘落样式 */
+    .paper {
+      position: fixed;
+      top: -2vh;
+      width: 12px;
+      height: 12px;
+      opacity: 0.8;
+      transform: rotate(0deg);
+      animation: fallPaper linear forwards;
+      z-index: 9999;
+      border-radius: 2px;
+      pointer-events: none;
+    }
   
-      function createPaper() {
-        const paper = document.createElement('div');
-        paper.className = 'paper';
-        paper.style.left = Math.random() * 100 + 'vw';
-        paper.style.animationDuration = (Math.random() * 3 + 3) + 's';
-        paper.style.background = colors[Math.floor(Math.random() * colors.length)];
-        document.body.appendChild(paper);
-  
-        setTimeout(() => {
-          paper.remove();
-        }, 6000); // 动画结束后自动移除
+    @keyframes fallPaper {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
       }
-  
-      setInterval(createPaper, 300);
-    });
-  </script>
+      100% {
+        transform: translateY(var(--fall-distance, 100vh)) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+<script>
+  const colors = ['#FFB6C1', '#FFDAB9', '#E6E6FA', '#FFFACD', '#D8BFD8'];
+
+  function createPaper() {
+    const paper = document.createElement('div');
+    paper.className = 'paper';
+
+    const fallHeight = window.innerHeight + 'px'; // 动态设置动画距离
+    paper.style.setProperty('--fall-distance', fallHeight);
+
+    paper.style.left = Math.random() * 100 + 'vw';
+    paper.style.animationDuration = (Math.random() * 3 + 3) + 's';
+    paper.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+    document.body.appendChild(paper);
+
+    setTimeout(() => {
+      paper.remove();
+    }, 6000);
+  }
+
+  setInterval(createPaper, 300);
+</script>  
   
 </body>
 </html>
