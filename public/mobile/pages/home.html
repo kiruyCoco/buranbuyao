@@ -30,23 +30,7 @@
 <div id="loader" class="loader">
   <div class="spinner"></div>
 </div>
-<!---------------------------------------------- 折纸飘落效果 ---------------------------------------------------------------->
-<script>
-  const colors = ['#FFB6C1', '#FFDAB9', '#E6E6FA', '#FFFACD', '#D8BFD8'];
-  function createPaper() {
-    const paper = document.createElement('div');
-    paper.className = 'paper';
-    paper.style.left = Math.random() * 100 + 'vw';
-    paper.style.animationDuration = (Math.random() * 3 + 3) + 's';
-    paper.style.background = colors[Math.floor(Math.random() * colors.length)];
-    document.body.appendChild(paper);
 
-    setTimeout(() => {
-      paper.remove();
-    }, 6000);
-  }
-  setInterval(createPaper, 300);
-</script>
 </body>
  <!-- 导航栏 -->
  <div class="nav-bar">
@@ -165,5 +149,26 @@
     </div>
   </footer>
   <script src="../assets/js/home.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const colors = ['#FFB6C1', '#FFDAB9', '#E6E6FA', '#FFFACD', '#D8BFD8'];
+  
+      function createPaper() {
+        const paper = document.createElement('div');
+        paper.className = 'paper';
+        paper.style.left = Math.random() * 100 + 'vw';
+        paper.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        paper.style.background = colors[Math.floor(Math.random() * colors.length)];
+        document.body.appendChild(paper);
+  
+        setTimeout(() => {
+          paper.remove();
+        }, 6000); // 动画结束后自动移除
+      }
+  
+      setInterval(createPaper, 300);
+    });
+  </script>
+  
 </body>
 </html>

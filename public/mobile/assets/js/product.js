@@ -3,19 +3,6 @@ window.onload = function() {
     document.getElementById('loader').style.display = 'none';
   };  
 
-  function updateViewportHeight() {
-    // 计算 1vh 的实际像素值
-    const vh = window.innerHeight * 0.01;
-    // 更新到 :root 变量 --vh
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-  }
-  
-  // 页面加载时初始化变量
-  window.addEventListener('load', updateViewportHeight);
-  // 当窗口尺寸变化时更新
-  window.addEventListener('resize', updateViewportHeight);
-  
-
 // ---------------------- 微信弹窗控制 ----------------------
 
 // 打开微信弹窗

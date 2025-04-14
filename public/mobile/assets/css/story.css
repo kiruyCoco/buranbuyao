@@ -56,8 +56,9 @@ main {
 }
 
 /*---------------------------------------------- 折纸飘落效果 ----------------------------------------------------------------*/
+/* ---------------- 折纸飘落动画 ---------------- */
 .paper {
-  position: fixed;
+  position: fixed; /* ✅ 改为 fixed */
   top: -2vh;
   width: 12px;
   height: 12px;
@@ -66,7 +67,9 @@ main {
   animation: fallPaper linear forwards;
   z-index: 9999;
   border-radius: 2px;
+  pointer-events: none; /* ✅ 不要影响鼠标事件 */
 }
+
 
 @keyframes fallPaper {
   0% {
@@ -77,32 +80,7 @@ main {
     transform: translateY(100vh) rotate(360deg);
     opacity: 0;
   }
-}/*---------------------------------------------- 折纸飘落效果 ----------------------------------------------------------------*/
-.paper {
-  position: fixed;
-  top: -2vh;
-  width: 12px;
-  height: 12px;
-  opacity: 0.8;
-  transform: rotate(0deg);
-  /* 使用 CSS 变量 --vh 代替固定 100vh */
-  animation: fallPaper linear forwards;
-  z-index: 9999;
-  border-radius: 2px;
 }
-
-@keyframes fallPaper {
-  0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 1;
-  }
-  100% {
-    /* 使用 calc 计算实际高度 */
-    transform: translateY(calc(var(--vh, 1vh) * 100)) rotate(360deg);
-    opacity: 0;
-  }
-}
-
 /* 导航栏 */
 .nav-bar {
   position: fixed;
