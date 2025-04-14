@@ -1,17 +1,15 @@
-/* 确保 body 和 html 充满视口 */
 body, html {
   margin: 0;
   padding: 0;
-  height: 100%;
+  min-height: 100vh; /* 至少等于视口高度 */
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   font-family: "Noto Sans", Arial, sans-serif;
 }
 
 /* 页脚的底部内容 */
 body {
-  padding-top: 80px; /* 给页面内容留出空间，避免被固定的导航栏遮挡 */
+  padding-top: 62px; /* 给页面内容留出空间，避免被固定的导航栏遮挡 */
   display: flex;
   flex-direction: column;
   flex: 1; /* 让 body 占满剩余的空间 */
@@ -212,6 +210,409 @@ main {
     opacity: 1;
   }
 }
+
+/* 背景轮播容器 */
+.background {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+/* 轮播图片容器 */
+.background-slides {
+  display: flex;
+  transition: transform 1s ease-in-out;
+  height: 100%;
+}
+
+.background-slide {
+  min-width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+/* 小圆点容器 */
+.dots-container {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: white;
+}
+
+/* 左右切换箭头 */
+.prev-arrow, .next-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.prev-arrow {
+  left: 10px;
+}
+
+.next-arrow {
+  right: 10px;
+}
+
+.prev-arrow:hover, .next-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* 文字覆盖层 */
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  z-index: 1;
+}
+
+.text-overlay h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.text-overlay p {
+  font-size: 1.5rem;
+}
+
+/* 我们的产品标题背景色 */
+.product-title {
+  background-color: #f8f4e2;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+/* 我们的产品标题样式 */
+.product-title {
+  font-family: 'Arial', sans-serif; /* 使用相同字体 */
+  font-size: 3rem; /* 增大字体 */
+  font-weight: bold; /* 加粗字体 */
+  color: #8B4513; /* 使用品牌色 */
+  text-align: center;
+  letter-spacing: 2px; /* 字间距 */
+  text-transform: uppercase; /* 大写字母 */
+  padding: 20px 0; /* 添加上下内边距 */
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 文字阴影 */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.product-title:hover {
+  transform: translateY(-5px); /* 鼠标悬停时轻微上移 */
+}
+
+/* 产品容器 */
+.products-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* 单个产品项 */
+.product-item {
+  background-color: #fff;
+  padding: 20px;
+  width: 20%;  /* 使每个产品项并排显示 */
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  flex-grow: 1;
+}
+
+/* 产品项图片样式 */
+.product-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease;  /* 平滑过渡效果 */
+  cursor: pointer;              /* 鼠标悬停时显示可点击的手形 */
+}
+
+/* 鼠标悬停时，图片放大 */
+.product-item:hover img {
+  transform: scale(1.1);  /* 放大10% */
+}
+
+.product-item p {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+/* 产品季节文字样式 */
+.product-season {
+  font-size: 2.5rem !important;  /* 增大字体大小 */
+  color: #80591af3;        /* 默认颜色 */
+  margin-top: 1px;         /* 设置文字与图片之间的距离 */
+  font-weight: bold;       /* 设置文字加粗 */
+  text-align: center;      /* 使文字居中对齐 */
+  transition: color 0.3s ease; /* 平滑过渡效果 */
+  cursor: pointer;              /* 鼠标悬停时显示可点击的手形 */
+}
+
+/* 鼠标悬停时的效果 */
+.product-item:hover .product-season {
+  color: #f8c73e; /* 鼠标悬停时的颜色 */
+}
+
+
+/* 查看更多按钮容器样式 */
+.btn-container {
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+  margin-top: 20px;
+}
+
+/* 查看更多按钮样式 */
+.btn-see-more {
+  background-color: #f8c73e; /* 按钮背景色 */
+  color: white; /* 按钮文字颜色 */
+  padding: 15px 30px; /* 按钮内边距 */
+  font-size: 1.5rem; /* 字体大小 */
+  font-weight: bold; /* 让字体加粗 */
+  border: none;
+  border-radius: 6px; /* 圆角效果 */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* 过渡效果 */
+}
+
+.btn-see-more:hover {
+  background-color: #ff6f61; /* 悬停时背景色 */
+  transform: scale(1.1); /* 悬停时放大 */
+}
+
+/* 门店形象标题背景色 */
+.store-title {
+  padding: 50px 0;
+  background-color: #f6dba9;
+  text-align: center;
+}
+
+/* 门店形象标题样式 */
+.store-title {
+  font-family: 'Arial', sans-serif; /* 使用相同字体 */
+  font-size: 3rem; /* 增大字体 */
+  font-weight: bold; /* 加粗字体 */
+  color: #8B4513; /* 使用品牌色 */
+  text-align: center;
+  letter-spacing: 2px; /* 字间距 */
+  text-transform: uppercase; /* 大写字母 */
+  padding: 20px 0; /* 添加上下内边距 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 文字阴影 */
+  width: 100%;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.store-title:hover {
+  transform: translateY(-5px); /* 鼠标悬停时轻微上移 */
+}
+
+.store-carousel-wrapper {
+  position: relative;
+  width: 70%;  /* 控制宽度，左右留空 */
+  margin: 0 auto;  /* 居中 */
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: #eee;
+}
+
+.store-carousel {
+  display: flex;
+  transition: transform 0.8s ease;
+}
+
+.store-slide {
+  min-width: 100%;
+  height: 600px;  /* 可以根据图片比例调整 */
+  background-size: cover;
+  background-position: center;
+}
+
+.store-prev-arrow, .store-next-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.3s ease;
+}
+
+.store-prev-arrow {
+  left: 10px;
+}
+
+.store-next-arrow {
+  right: 10px;
+}
+
+.store-prev-arrow:hover, .store-next-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* 小圆点容器 */
+.store-dots-container {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.store-dot {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.store-dot.active {
+  background-color: #333;
+}
+
+/* 加盟优势标题背景色 */
+.franchise-title {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #ffd0cbd1;
+}
+
+/* 商标图片样式 */
+.trademark-certificates {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  gap: 5px; /* 添加间距，让图片之间有一定的空隙 */
+}
+
+.trademark-img {
+  max-width: 30%; /* 设置最大宽度为容器的45%，避免图片过大 */
+  height: auto; /* 保持图片比例 */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  object-fit: contain; /* 确保图片在框内自适应 */
+}
+
+
+/* 立即加盟按钮容器样式 */
+.btn-container {
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+  margin-top: 20px;
+}
+
+/* 立即加盟按钮样式 */
+.btn-join-now {
+  background-color: #f8c73e; /* 按钮背景色 */
+  color: white; /* 按钮文字颜色 */
+  padding: 15px 30px; /* 按钮内边距 */
+  font-size: 1.5rem; /* 字体大小 */
+  font-weight: bold; /* 让字体加粗 */
+  border: none;
+  border-radius: 6px; /* 圆角效果 */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* 过渡效果 */
+}
+
+.btn-join-now:hover {
+  background-color: #ff6f61; /* 悬停时背景色 */
+  transform: scale(1.1); /* 悬停时放大 */
+}
+
+
+/* 加盟优势标题样式 */
+.franchise-title {
+  font-family: 'Arial', sans-serif; /* 使用相同字体 */
+  font-size: 3rem; /* 增大字体 */
+  font-weight: bold; /* 加粗字体 */
+  color: #8B4513; /* 使用品牌色 */
+  text-align: center;
+  letter-spacing: 2px; /* 字间距 */
+  text-transform: uppercase; /* 大写字母 */
+  padding: 20px 0; /* 添加上下内边距 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 文字阴影 */
+  width: 100%;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.franchise-title:hover {
+  transform: translateY(-5px); /* 鼠标悬停时轻微上移 */
+}
+
+.factory-video-container {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.factory-video {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.franchise-content {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+
+.franchise-item {
+  background-color: white;
+  padding: 20px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.franchise-item h3 {
+  color: #8B4513;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.franchise-item p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
 
   /*-------------------------------------------- 页脚 ---------------------------------------------*/
 /* 页脚整体设置 */

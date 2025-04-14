@@ -2,16 +2,15 @@
 body, html {
   margin: 0;
   padding: 0;
-  height: 100%;
+  min-height: 100vh; /* 至少等于视口高度 */
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   font-family: "Noto Sans", Arial, sans-serif;
 }
 
 /* 页脚的底部内容 */
 body {
-  padding-top: 80px; /* 给页面内容留出空间，避免被固定的导航栏遮挡 */
+  padding-top: 0px; /* 给页面内容留出空间，避免被固定的导航栏遮挡 */
   display: flex;
   flex-direction: column;
   flex: 1; /* 让 body 占满剩余的空间 */
@@ -35,11 +34,6 @@ body {
   align-items: center;
   height: 100%;
   margin: 0;
-}
-
-/* 防止内容被固定的导航栏遮挡 */
-main {
-  padding-top: 100px;
 }
 
 /* 加载动画样式 */
@@ -237,7 +231,6 @@ z-index: 9999;
   justify-content: center;
   align-items: center;
   min-height: 30vh;
-  margin-top: 800px; /* 跟导航栏的高度一致，确保下移 */
   padding: 20px;
   border-radius: 20px;
   background-color: #fff9f4;

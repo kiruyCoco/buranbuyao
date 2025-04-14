@@ -39,14 +39,11 @@
     100% { transform: rotate(360deg); }
   }
 </style>
-</head>
 <body>
 <!-- 加载动画容器 -->
 <div id="loader" class="loader">
   <div class="spinner"></div>
 </div>
-</main>
-</body>
  <!-- 导航栏 -->
  <div class="nav-bar">
   <!-- logo -->
@@ -68,6 +65,101 @@
       </select>
     </div>
   </div>
+</main>
+    <!-- 背景轮播 -->
+    <div class="background">
+      <div class="background-slides">
+        <div class="background-slide" style="background-image: url('https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/HomePoster1.jpg');"></div>
+        <div class="background-slide" style="background-image: url('https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/HomePoster2.jpg');"></div>
+        <div class="background-slide" style="background-image: url('https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/HomePoster3.jpg');"></div>
+        <div class="background-slide" style="background-image: url('https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/HomePoster4.jpg');"></div>
+        <div class="background-slide" style="background-image: url('https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/HomePoster5.jpg');"></div>
+        <div class="background-slide" style="background-image: url('https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/HomePoster6.jpg');"></div>
+        <div class="background-slide" style="background-image: url('https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/HomePoster7.jpg');"></div>
+        <div class="background-slide" style="background-image: url('https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/HomePoster8.jpg');"></div>
+        <div class="background-slide" style="background-image: url('https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/HomePoster9.jpg');"></div>
+        <div class="background-slide" style="background-image: url('https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/HomePoster10.jpg');"></div>
+      </div>
+  
+      <!-- 小圆点 -->
+      <div class="dots-container"></div>
+  
+      <!-- 左右切换箭头 -->
+      <div class="prev-arrow" onclick="moveToPrevSlide()">
+        <i class="fas fa-chevron-left"></i>
+      </div>
+      <div class="next-arrow" onclick="moveToNextSlide()">
+        <i class="fas fa-chevron-right"></i>
+      </div>
+  
+      <!-- 文字覆盖层 -->
+      <div class="text-overlay">
+        <h1>欢迎来到布染布妖精品童装</h1>
+        <p>为孩子们提供温暖、时尚和可爱的童装。</p>
+      </div>
+    </div>
+
+    <div class="product-title">我们的产品</div>
+    <div class="products-container">
+      <div class="product-item">
+        <img src="https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/2025SS.jpg" alt="产品1" />
+        <p class="product-season">2025春夏</p>
+      </div>
+      <div class="product-item">
+        <img src="https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/2024AW.jpg" alt="产品2" />
+        <p class="product-season">2024秋冬</p>
+      </div>
+      <div class="product-item">
+        <img src="https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/2024SS.jpg" alt="产品3" />
+        <p class="product-season">2024春夏</p>
+      </div>
+      <div class="product-item">
+        <img src="https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/2023AW.jpg" alt="产品4" />
+        <p class="product-season">2023秋冬</p>
+      </div>
+    </div>
+    <div class="btn-container">
+      <a href="product.html">
+        <button class="btn-see-more">查看更多</button>
+      </a>
+    </div>
+
+    <div class="store-title">门店形象</div>
+    <div class="store-carousel-wrapper">
+      <div class="store-carousel">
+        <div class="store-slide" style="background-image: url('https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/HomeStore1.jpg');"></div>
+        <div class="store-slide" style="background-image: url('https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/HomeStore2.jpg');"></div>
+        <div class="store-slide" style="background-image: url('https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/HomeStore3.jpg');"></div>
+      </div>
+      <div class="store-prev-arrow" onclick="moveToPrevStoreSlide()">&#10094;</div>
+      <div class="store-next-arrow" onclick="moveToNextStoreSlide()">&#10095;</div>
+    </div>
+    <div class="store-dots-container"></div>
+
+    <div class="franchise-title">加盟优势</div>
+    <div class="factory-video-container">
+      <video class="factory-video" controls>
+        <source src="your-factory-video-url.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="franchise-content">
+      <div class="franchise-item">
+        <h3>实力工厂</h3>
+        <p>我们的工厂拥有先进的生产设备和一流的生产线，保障产品的质量和生产效率。</p>
+      </div>
+      <div class="franchise-item">
+        <h3>商标注册</h3>
+        <p>我们的品牌商标已在多个国家注册，确保加盟商的利益和品牌保护。</p>
+        <div class="trademark-certificates">
+          <img src="https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/trademark1.jpg" alt="商标注册证1" class="trademark-img" />
+          <img src="https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/trademark2.jpg" alt="商标注册证2" class="trademark-img" />
+        </div>
+      </div>
+    </div>
+    <div class="btn-container">
+      <button class="btn-join-now">立即加盟</button>
+    </div>
   <main>
 <!-- 微信图标 -->
 <a href="javascript:void(0);" class="wechat-icon" onclick="openWechatModal()">
@@ -83,7 +175,6 @@
     <p>微信号：buranbuyao1</p>
   </div>
 </div>
-
   <footer>
     <!-- 第一列：品牌信息和社交媒体（文字方式） -->
     <div class="footer-column">
@@ -229,6 +320,5 @@
   // 初次加载时设置下落距离
   updateFallDistance();
 </script>
-
 </body>
 </html>

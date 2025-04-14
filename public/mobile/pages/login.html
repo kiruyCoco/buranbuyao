@@ -42,14 +42,12 @@
     100% { transform: rotate(360deg); }
   }
 </style>
-</head>
-<body>
+
+
 <!-- 加载动画容器 -->
 <div id="loader" class="loader">
   <div class="spinner"></div>
 </div>
-</main>
- <body>
  <!-- 导航栏 -->
  <div class="nav-bar">
       <!-- logo -->
@@ -71,38 +69,35 @@
       </select>
     </div>
   </div>
- 
-  <div class="login-wrapper">
-    <div class="login-box">
-      <!-- 左侧：客服微信区域 -->
-      <div class="box-left">
-        <h3>联系客服</h3>
-        <p>获得邀请码，查看更多精彩内容</p>
-        <img src="https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/WechatYang.jpg" alt="微信二维码" />
-      </div>
-
-      <!-- 右侧：登录区域 -->
-      <div class="box-right">
-        <h2>欢迎回来</h2>
-        <form id="login-form">
-          <div class="form-group">
-            <label for="phone">手机号/用户名</label>
-            <input type="text" id="phone" name="phone" required placeholder="请输入手机号或用户名" />
-          </div>
-          <div class="form-group">
-            <label for="password">密码</label>
-            <input type="password" id="password" name="password" required />
-          </div>
-          <button type="submit" class="login-btn">登录</button>
-        </form>
-        <div class="bottom-text">
-          还没有账户？<a href="register.html">点击注册</a>
+ <body>
+  <main>
+    <div class="login-wrapper">
+      <div class="login-box">
+        <!-- 左侧：客服微信区域 -->
+        <div class="box-left">
+          <h3>联系客服</h3>
+          <p>获得邀请码，查看更多精彩内容</p>
+          <img src="https://buranbuyao.oss-cn-hangzhou.aliyuncs.com/WechatYang.jpg" alt="微信二维码" />
         </div>
-      </div>
-    </div>
-  </div>
-</main>
-
+  
+        <!-- 右侧：登录区域 -->
+        <div class="box-right">
+          <h2>欢迎回来</h2>
+          <form id="login-form">
+            <div class="form-group">
+              <label for="phone">手机号/用户名</label>
+              <input type="text" id="phone" name="phone" required placeholder="请输入手机号或用户名" />
+            </div>
+            <div class="form-group">
+              <label for="password">密码</label>
+              <input type="password" id="password" name="password" required />
+            </div>
+            <button type="submit" class="login-btn">登录</button>
+          </form>
+          <div class="bottom-text">
+            还没有账户？<a href="register.html">点击注册</a>
+          </div>
+  </main>
 
 <!-- 微信图标 -->
 <a href="javascript:void(0);" class="wechat-icon" onclick="openWechatModal()">
@@ -118,7 +113,6 @@
     <p>微信号：buranbuyao1</p>
   </div>
 </div>
-
 
 <footer>
   <!-- 第一列：品牌信息和社交媒体（文字方式） -->
@@ -265,6 +259,5 @@
   // 初次加载时设置下落距离
   updateFallDistance();
 </script>
-
 </body>
 </html>
