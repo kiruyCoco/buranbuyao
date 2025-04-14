@@ -56,44 +56,30 @@ align-items: center;
 z-index: 9999;
 }
 
-/* 旋转的动画 */
-.spinner {
-border: 4px solid #f3f3f3;
-border-top: 4px solid #FFB6C1;  /* 粉色旋转 */
-border-radius: 50%;
-width: 50px;
-height: 50px;
-animation: spin 2s linear infinite;
-}
-
-/* 旋转动画 */
-@keyframes spin {
-0% { transform: rotate(0deg); }
-100% { transform: rotate(360deg); }
-}
-
 /*---------------------------------------------- 折纸飘落效果 ----------------------------------------------------------------*/
 .paper {
-position: fixed;
-top: -2vh;
-width: 12px;
-height: 12px;
-opacity: 0.8;
-transform: rotate(0deg);
-animation: fallPaper linear forwards;
-z-index: 9999;
-border-radius: 2px;
+  position: fixed;
+  top: -2vh;
+  width: 12px;
+  height: 12px;
+  opacity: 0.8;
+  transform: rotate(0deg);
+  /* 使用 CSS 变量 --vh 代替固定 100vh */
+  animation: fallPaper linear forwards;
+  z-index: 9999;
+  border-radius: 2px;
 }
 
 @keyframes fallPaper {
-0% {
-  transform: translateY(0) rotate(0deg);
-  opacity: 1;
-}
-100% {
-  transform: translateY(100vh) rotate(360deg);
-  opacity: 0;
-}
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    /* 使用 calc 计算实际高度 */
+    transform: translateY(calc(var(--vh, 1vh) * 100)) rotate(360deg);
+    opacity: 0;
+  }
 }
 
 /* 导航栏 */
@@ -177,7 +163,7 @@ border-radius: 2px;
   margin: 0;
 }
 
-/* 微信 */
+/* 微信图标样式 */
 .wechat-icon {
   position: fixed;
   bottom: 50px;
@@ -189,6 +175,7 @@ border-radius: 2px;
   border-radius: 50%;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
+  z-index: 9999;
 }
 
 .wechat-icon:hover {
@@ -196,39 +183,60 @@ border-radius: 2px;
   color: white;
 }
 
+/* 微信弹窗背景 */
 .wechat-modal {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background-color: rgba(0, 0, 0, 0.7);
-  z-index: 100;
+  z-index: 10000;
   justify-content: center;
   align-items: center;
 }
 
+/* 弹窗内容盒子 */
 .wechat-modal-content {
+  position: relative;
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
   text-align: center;
-  width: 300px;
+  width: 90%;
+  max-width: 320px;
+  animation: fadeInScale 0.3s ease;
 }
 
+/* 二维码图片 */
 .wechat-modal img {
   width: 100%;
   height: auto;
+  margin: 10px 0;
 }
 
+/* 关闭按钮 */
 .close {
   position: absolute;
-  top: 5px;
+  top: 10px;
   right: 10px;
-  font-size: 30px;
-  color: #333;
+  font-size: 26px;
+  color: #888;
   cursor: pointer;
+  transition: color 0.3s ease;
+}
+.close:hover {
+  color: #000;
+}
+
+/* 弹窗出现动画 */
+@keyframes fadeInScale {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* 增大语言选择按钮 */
@@ -446,6 +454,8 @@ footer {
   gap: 1px;
   margin-left: auto;           /* 利用自动外边距将内容推到右侧 */
   transform: translateX(140px); /* 可根据需要调整移动距离 */
+  white-space: nowrap;         /* 防止子项换行 */
+  min-width: fit-content;      /* 让容器最小宽度适应内容 */
 }
 
 .social-item {

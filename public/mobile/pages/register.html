@@ -26,22 +26,6 @@
     align-items: center;
     z-index: 9999;
   }
-
-  /* 旋转的动画 */
-  .spinner {
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #FFB6C1;  /* 粉色旋转 */
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 2s linear infinite;
-  }
-
-  /* 旋转动画 */
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
 </style>
 </head>
 <body>
@@ -49,13 +33,6 @@
 <div id="loader" class="loader">
   <div class="spinner"></div>
 </div>
-
-<script>
-  window.onload = function() {
-    // 页面加载完毕后隐藏加载动画
-    document.getElementById('loader').style.display = 'none';
-  };
-</script>
 
 <!---------------------------------------------- 折纸飘落效果 ---------------------------------------------------------------->
 <script>
@@ -136,12 +113,12 @@
     </div>
   </main>
   
- <!-- 微信图标 -->
- <a href="javascript:void(0);" class="wechat-icon" onclick="openWechatModal()">
+<!-- 微信图标 -->
+<a href="javascript:void(0);" class="wechat-icon" onclick="openWechatModal()">
   <i class="fab fa-weixin"></i>
 </a>
 
-<!-- 微信弹窗 -->
+<!-- 弹窗内容 -->
 <div id="wechatModal" class="wechat-modal">
   <div class="wechat-modal-content">
     <span class="close" onclick="closeWechatModal()">&times;</span>
