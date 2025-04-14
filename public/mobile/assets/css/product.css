@@ -10,7 +10,7 @@ body, html {
 
 /* 页脚的底部内容 */
 body {
-  padding-top: 600px; /* 给页面内容留出空间，避免被固定的导航栏遮挡 */
+  padding-top: 150px; /* 给页面内容留出空间，避免被固定的导航栏遮挡 */
   display: flex;
   flex-direction: column;
   flex: 1; /* 让 body 占满剩余的空间 */
