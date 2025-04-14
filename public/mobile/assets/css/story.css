@@ -236,7 +236,7 @@ main {
   padding: 100px 0;
   text-align: center;
   width: 100%;
-  padding-top: 300px; /* 根据导航栏高度+视觉需求来调整，比如导航栏 80px，这里加 150px */
+  padding-top: 1000px; /* 根据导航栏高度+视觉需求来调整，比如导航栏 80px，这里加 150px */
 }
 
 .hero h1 {
