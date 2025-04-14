@@ -150,18 +150,17 @@
   </footer>
   <script src="../assets/js/home.js" defer></script>
   <style>
-    /* 折纸飘落样式 */
     .paper {
       position: fixed;
-      top: -2vh;
-      width: 12px;
-      height: 12px;
-      opacity: 0.8;
-      transform: rotate(0deg);
-      animation: fallPaper linear forwards;
-      z-index: 9999;
-      border-radius: 2px;
-      pointer-events: none;
+      top: -2vh;  /* 初始位置为视口顶部 */
+      width: 12px; /* 折纸元素的宽度 */
+      height: 12px; /* 折纸元素的高度 */
+      opacity: 0.8; /* 不完全透明 */
+      transform: rotate(0deg); /* 初始旋转 */
+      animation: fallPaper linear forwards; /* 使用 fallPaper 动画 */
+      z-index: 9999; /* 使折纸元素显示在最前面 */
+      border-radius: 2px; /* 圆角效果 */
+      pointer-events: none; /* 防止折纸元素干扰用户交互 */
     }
   
     @keyframes fallPaper {
@@ -170,7 +169,7 @@
         opacity: 1;
       }
       100% {
-        transform: translateY(var(--fall-distance, 100vh)) rotate(360deg);
+        transform: translateY(var(--fall-distance)) rotate(360deg);
         opacity: 0;
       }
     }
@@ -178,7 +177,7 @@
 <script>
   const colors = ['#FFB6C1', '#FFDAB9', '#E6E6FA', '#FFFACD', '#D8BFD8'];
 
-  // 动态更新动画下落距离
+  // 更新动画的下落高度和宽度
   function updateFallDistance() {
     const fallHeight = window.innerHeight + 'px'; // 获取当前窗口高度
     const fallWidth = window.innerWidth + 'px';   // 获取当前窗口宽度
@@ -186,7 +185,7 @@
     document.documentElement.style.setProperty('--fall-width', fallWidth); // 更新水平分布区域
   }
 
-  // 创建一个折纸元素
+  // 创建折纸元素
   function createPaper() {
     const paper = document.createElement('div');
     paper.className = 'paper';
@@ -206,11 +205,11 @@
     }, 6000);
   }
 
-  // 设置折纸飘落的间隔
-  setInterval(createPaper, 300);
-
   // 每次窗口大小改变时更新动画的下落距离
   window.addEventListener('resize', updateFallDistance);
+
+  // 每隔一定时间生成折纸元素
+  setInterval(createPaper, 300);
 
   // 初次加载时设置下落距离
   updateFallDistance();
