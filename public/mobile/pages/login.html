@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=1280, initial-scale=1.0, user-scalable=yes">
+  <meta name="viewport" content="width=1200, initial-scale=0.3, maximum-scale=1.0">
   <title>品牌产品</title>
   <link rel="stylesheet" href="../assets/css/login.css">
 </head>
@@ -185,25 +185,71 @@
   </div>
 </footer>
   <script src="../assets/js/login.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const colors = ['#FFB6C1', '#FFDAB9', '#E6E6FA', '#FFFACD', '#D8BFD8'];
+  <style>
+    .paper {
+      position: fixed;
+      top: -2vh;  /* 初始位置为视口顶部 */
+      width: 12px; /* 折纸元素的宽度 */
+      height: 12px; /* 折纸元素的高度 */
+      opacity: 0.8; /* 不完全透明 */
+      transform: rotate(0deg); /* 初始旋转 */
+      animation: fallPaper linear forwards; /* 使用 fallPaper 动画 */
+      z-index: 9999; /* 使折纸元素显示在最前面 */
+      border-radius: 2px; /* 圆角效果 */
+      pointer-events: none; /* 防止折纸元素干扰用户交互 */
+    }
   
-      function createPaper() {
-        const paper = document.createElement('div');
-        paper.className = 'paper';
-        paper.style.left = Math.random() * 100 + 'vw';
-        paper.style.animationDuration = (Math.random() * 3 + 3) + 's';
-        paper.style.background = colors[Math.floor(Math.random() * colors.length)];
-        document.body.appendChild(paper);
-  
-        setTimeout(() => {
-          paper.remove();
-        }, 6000); // 动画结束后自动移除
+    @keyframes fallPaper {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
       }
-  
-      setInterval(createPaper, 300);
-    });
-  </script>
+      100% {
+        transform: translateY(var(--fall-distance)) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+<script>
+  const colors = ['#FFB6C1', '#FFDAB9', '#E6E6FA', '#FFFACD', '#D8BFD8'];
+
+  // 更新动画的下落高度和宽度
+  function updateFallDistance() {
+    const fallHeight = window.innerHeight + 'px'; // 获取当前窗口高度
+    const fallWidth = window.innerWidth + 'px';   // 获取当前窗口宽度
+    document.documentElement.style.setProperty('--fall-distance', fallHeight); // 更新垂直下落距离
+    document.documentElement.style.setProperty('--fall-width', fallWidth); // 更新水平分布区域
+  }
+
+  // 创建折纸元素
+  function createPaper() {
+    const paper = document.createElement('div');
+    paper.className = 'paper';
+    
+    // 随机设置折纸元素的横向位置，确保覆盖整个宽度
+    const randomLeft = Math.random() * 100;  // 在0%到100%范围内随机
+    paper.style.left = randomLeft + 'vw';    // 设置横向位置（宽度范围）
+
+    paper.style.animationDuration = (Math.random() * 3 + 3) + 's'; // 随机动画持续时间
+    paper.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+    document.body.appendChild(paper);
+
+    // 清理已显示的折纸元素
+    setTimeout(() => {
+      paper.remove();
+    }, 6000);
+  }
+
+  // 每次窗口大小改变时更新动画的下落距离
+  window.addEventListener('resize', updateFallDistance);
+
+  // 每隔一定时间生成折纸元素
+  setInterval(createPaper, 300);
+
+  // 初次加载时设置下落距离
+  updateFallDistance();
+</script>
+
 </body>
 </html>

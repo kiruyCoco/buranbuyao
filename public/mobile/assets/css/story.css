@@ -11,7 +11,7 @@ body, html {
 
 /* 页脚的底部内容 */
 body {
-  padding-top: 80px; /* 给页面内容留出空间，避免被固定的导航栏遮挡 */
+  padding-top: 500px; /* 给页面内容留出空间，避免被固定的导航栏遮挡 */
   display: flex;
   flex-direction: column;
   flex: 1; /* 让 body 占满剩余的空间 */
@@ -39,7 +39,7 @@ body {
 
 /* 防止内容被固定的导航栏遮挡 */
 main {
-  padding-top: 100px;
+  padding-top: 50px;
 }
   /* 加载动画样式 */
 #loader {
@@ -55,32 +55,6 @@ main {
   z-index: 9999;
 }
 
-/*---------------------------------------------- 折纸飘落效果 ----------------------------------------------------------------*/
-/* ---------------- 折纸飘落动画 ---------------- */
-.paper {
-  position: fixed; /* ✅ 改为 fixed */
-  top: -2vh;
-  width: 12px;
-  height: 12px;
-  opacity: 0.8;
-  transform: rotate(0deg);
-  animation: fallPaper linear forwards;
-  z-index: 9999;
-  border-radius: 2px;
-  pointer-events: none; /* ✅ 不要影响鼠标事件 */
-}
-
-
-@keyframes fallPaper {
-  0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh) rotate(360deg);
-    opacity: 0;
-  }
-}
 /* 导航栏 */
 .nav-bar {
   position: fixed;
@@ -254,25 +228,28 @@ main {
     100% { opacity: 1; }
   }
 
-
 /*---------------------------------------------- 英雄区 ----------------------------------------------*/
 .hero {
   background: linear-gradient(to right, #f0e4d7, #d9a78b); /* 渐变背景色 */
-  padding: 100px 0;
+  padding: 50px 0;  /* 减少上下间距 */
   text-align: center;
+  min-height: 300px; /* 保证最小高度 */
+  overflow: hidden; /* 防止溢出 */
+  width: 100%; /* 让背景扩展至全宽 */
 }
 
 .hero h1 {
-  font-size: 3rem;
+  font-size: clamp(3rem, 5vw, 8rem); /* 最小3rem，最大8rem，自动适应中间值 */
   color: #ffffff;
   font-weight: bold;
 }
 
 .hero p {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 1.5vw, 2rem); /* 最小1rem，最大2rem，自动适应中间值 */
   color: #ffffff;
   margin-top: 10px;
 }
+
 
 /*---------------------------------------------- 品牌起源与理念 ----------------------------------------------*/
 #story {
@@ -456,6 +433,7 @@ main {
   padding: 80px 20px;
   text-align: center;
   border-bottom: 2px solid #d9a78b; /* 添加顶部边框，进一步分隔与页脚 */
+  width: 100%; /* 让背景扩展至全宽 */
 }
 
 .cta h2 {
@@ -492,6 +470,22 @@ main {
   transform: translateY(1px); /* 按钮被点击时的轻微下沉效果 */
 }
 
+/* 确保页面在小屏幕上背景能充满 */
+@media (max-width: 768px) {
+  .hero, .cta {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .cta h2 {
+    font-size: 2rem; /* 在小屏幕上减少标题字体大小 */
+  }
+
+  .cta p {
+    font-size: 1rem; /* 小屏幕上减少文本大小 */
+  }
+}
 
    /*-------------------------------------------- 页脚 ---------------------------------------------*/
 /* 页脚整体设置 */
