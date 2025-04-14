@@ -175,43 +175,46 @@
       }
     }
   </style>
-  
-  <script>
-    const colors = ['#FFB6C1', '#FFDAB9', '#E6E6FA', '#FFFACD', '#D8BFD8'];
-  
-    // 动态更新动画下落距离
-    function updateFallDistance() {
-      const fallHeight = window.innerHeight + 'px'; // 动态获取当前窗口高度
-      document.documentElement.style.setProperty('--fall-distance', fallHeight); // 更新 CSS 变量
-    }
-  
-    // 创建一个折纸元素
-    function createPaper() {
-      const paper = document.createElement('div');
-      paper.className = 'paper';
-      paper.style.left = Math.random() * 100 + 'vw';  // 随机横向位置
-  
-      paper.style.animationDuration = (Math.random() * 3 + 3) + 's'; // 随机动画持续时间
-      paper.style.background = colors[Math.floor(Math.random() * colors.length)];
-  
-      document.body.appendChild(paper);
-  
-      // 清理已显示的折纸元素
-      setTimeout(() => {
-        paper.remove();
-      }, 6000);
-    }
-  
-    // 设置折纸飘落的间隔
-    setInterval(createPaper, 300);
-  
-    // 每次窗口大小改变时更新动画的下落距离
-    window.addEventListener('resize', updateFallDistance);
-  
-    // 初次加载时设置下落距离
-    updateFallDistance();
-  </script>
-  
-  
+<script>
+  const colors = ['#FFB6C1', '#FFDAB9', '#E6E6FA', '#FFFACD', '#D8BFD8'];
+
+  // 动态更新动画下落距离
+  function updateFallDistance() {
+    const fallHeight = window.innerHeight + 'px'; // 获取当前窗口高度
+    const fallWidth = window.innerWidth + 'px';   // 获取当前窗口宽度
+    document.documentElement.style.setProperty('--fall-distance', fallHeight); // 更新垂直下落距离
+    document.documentElement.style.setProperty('--fall-width', fallWidth); // 更新水平分布区域
+  }
+
+  // 创建一个折纸元素
+  function createPaper() {
+    const paper = document.createElement('div');
+    paper.className = 'paper';
+    
+    // 随机设置折纸元素的横向位置，确保覆盖整个宽度
+    const randomLeft = Math.random() * 100;  // 在0%到100%范围内随机
+    paper.style.left = randomLeft + 'vw';    // 设置横向位置（宽度范围）
+
+    paper.style.animationDuration = (Math.random() * 3 + 3) + 's'; // 随机动画持续时间
+    paper.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+    document.body.appendChild(paper);
+
+    // 清理已显示的折纸元素
+    setTimeout(() => {
+      paper.remove();
+    }, 6000);
+  }
+
+  // 设置折纸飘落的间隔
+  setInterval(createPaper, 300);
+
+  // 每次窗口大小改变时更新动画的下落距离
+  window.addEventListener('resize', updateFallDistance);
+
+  // 初次加载时设置下落距离
+  updateFallDistance();
+</script>
+
 </body>
 </html>
