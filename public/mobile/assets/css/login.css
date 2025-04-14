@@ -76,6 +76,7 @@ z-index: 9999;
   -webkit-overflow-scrolling: touch;
 }
 
+
 /* 导航栏文字样式 */
 .nav-bar a {
   color: white;
@@ -136,6 +137,7 @@ z-index: 9999;
   font-size: 2rem;
   margin: 0;
 }
+
 
 /* 微信图标样式 */
 .wechat-icon {
@@ -229,46 +231,55 @@ z-index: 9999;
   100% { opacity: 1; }
 }
 
-/* 外层包装：垂直居中 + 背景色 */
+/* 让整个外层包装充满页面并居中显示内容 */
 .login-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 60vh; /* 增大最小高度 */
+  min-height: 30vh;
+  margin-top: 800px; /* 跟导航栏的高度一致，确保下移 */
   padding: 20px;
   border-radius: 20px;
   background-color: #fff9f4;
+  box-sizing: border-box;
 }
 
-/* 登录大框：圆角 + 阴影 + 溢出隐藏（保持圆角完整） */
+
+
+/* 登录大框：左右结构，水平居中 */
 .login-box {
   display: flex;
-  width: 680px;
-  max-width: 100%; /* 保证宽度自适应屏幕 */
+  width: 1000px;
+  height: 900px;
+  max-width: 100%;
   border-radius: 20px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   background-color: #fff;
 }
 
-/* 左侧客服：略小一点 */
+/* 左侧客服内容：内部上下左右居中 */
 .box-left {
   background: #f5e9dd;
   width: 40%;
   padding: 30px 20px;
   text-align: center;
   box-sizing: border-box;
-}
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .box-left h3 {
   color: #8D5B3A;
-  font-size: 24px;
+  font-size: 36px;
   margin-bottom: 10px;
 }
 
 .box-left p {
   color: #7a5b44;
-  font-size: 16px;
+  font-size: 24px;
   margin-bottom: 20px;
 }
 
@@ -278,19 +289,23 @@ z-index: 9999;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* 右侧登录 */
+/* 右侧登录表单：内部上下左右居中 */
 .box-right {
   background: linear-gradient(to bottom right, #fef7f0, #fceee1);
   width: 60%;
   padding: 30px 25px;
   box-sizing: border-box;
   text-align: center;
-}
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .box-right h2 {
   color: #8D5B3A;
   margin-bottom: 30px;
-  font-size: 26px;
+  font-size: 39px;
   font-weight: bold;
 }
 
@@ -312,7 +327,7 @@ z-index: 9999;
   padding: 12px;
   border: 1.5px solid #C8A27E;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 24px;
   background-color: #fff;
   color: #333;
   box-sizing: border-box;
@@ -331,7 +346,7 @@ z-index: 9999;
   border: none;
   border-radius: 30px;
   color: white;
-  font-size: 18px;
+  font-size: 27px;
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s ease;
@@ -344,7 +359,7 @@ z-index: 9999;
 
 .bottom-text {
   margin-top: 20px;
-  font-size: 14px;
+  font-size: 21px;
   color: #7a5b44;
 }
 

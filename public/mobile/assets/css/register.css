@@ -58,24 +58,6 @@ z-index: 9999;
 
 /* 导航栏 */
 .nav-bar {
-  position: fixed; /* 使导航栏固定在页面顶部 */
-  top: 0; /* 确保导航栏固定在顶部 */
-  left: 0;
-  width: 100%;
-  background: linear-gradient(to right, #D9A78B, #C8A27E); /* 渐变背景色 */
-  padding: 2px 30px;
-  z-index: 1000; /* 确保导航栏在页面元素之上 */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* 增加阴影 */
-  box-sizing: border-box;
-  border-bottom: 3px solid #C09775; /* 边框样式 */
-}
-
-
-/* 导航栏 */
-.nav-bar {
   position: fixed;
   top: 0;
   left: 0;
@@ -247,45 +229,55 @@ z-index: 9999;
   100% { opacity: 1; }
 }
 
-/* 外层包装：垂直居中 + 背景色 */
+/* 让整个外层包装充满页面并居中显示内容 */
 .register-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 30vh;
-  padding: 10px;
+  margin-top: -160px; /* 跟导航栏的高度一致，确保下移 */
+  padding: 20px;
   border-radius: 20px;
   background-color: #fff9f4;
+  box-sizing: border-box;
 }
 
-/* 登录大框：圆角 + 阴影 + 溢出隐藏（保持圆角完整） */
+
+
+/* 登录大框：左右结构，水平居中 */
 .register-box {
   display: flex;
-  width: 680px;
-  border-radius: 20px; /* ✅ 加入大框圆角 */
+  width: 1000px;
+  height: 900px;
+  max-width: 100%;
+  border-radius: 20px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  overflow: hidden; /* 避免子元素内容溢出破坏圆角 */
-  background-color: #fff; /* 可选：作为基础色调 */
+  overflow: hidden;
+  background-color: #fff;
 }
 
-/* 左侧客服：略小一点 */
+/* 左侧客服内容：内部上下左右居中 */
 .box-left {
   background: #f5e9dd;
   width: 40%;
   padding: 30px 20px;
   text-align: center;
   box-sizing: border-box;
-}
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .box-left h3 {
   color: #8D5B3A;
-  font-size: 24px;
+  font-size: 36px;
   margin-bottom: 10px;
 }
 
 .box-left p {
   color: #7a5b44;
-  font-size: 16px;
+  font-size: 24px;
   margin-bottom: 20px;
 }
 
@@ -295,19 +287,23 @@ z-index: 9999;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* 右侧登录 */
+/* 右侧登录表单：内部上下左右居中 */
 .box-right {
   background: linear-gradient(to bottom right, #fef7f0, #fceee1);
   width: 60%;
   padding: 30px 25px;
   box-sizing: border-box;
   text-align: center;
-}
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .box-right h2 {
   color: #8D5B3A;
   margin-bottom: 30px;
-  font-size: 26px;
+  font-size: 39px;
   font-weight: bold;
 }
 
@@ -329,7 +325,7 @@ z-index: 9999;
   padding: 12px;
   border: 1.5px solid #C8A27E;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 24px;
   background-color: #fff;
   color: #333;
   box-sizing: border-box;
@@ -348,7 +344,7 @@ z-index: 9999;
   border: none;
   border-radius: 30px;
   color: white;
-  font-size: 18px;
+  font-size: 27px;
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s ease;
@@ -361,7 +357,7 @@ z-index: 9999;
 
 .bottom-text {
   margin-top: 20px;
-  font-size: 14px;
+  font-size: 21px;
   color: #7a5b44;
 }
 
