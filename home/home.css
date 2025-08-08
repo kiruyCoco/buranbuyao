@@ -1,0 +1,346 @@
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    width: 100%;
+    font-family: sans-serif;
+    background-color: #fff;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+/* 导航栏样式 - 改为固定定位 */
+.navbar {
+  position: fixed; /* 固定在顶部 */
+  top: 0; /* 距离顶部0px */
+  left: 0; /* 距离左侧0px */
+  width: 100%; /* 占满整个屏幕宽度 */
+  background-color: #000;
+  color: #fff;
+  padding: 12px 20px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100; /* 确保在其他内容上方，避免被覆盖 */
+}
+
+/* 为主要内容添加顶部间距，避免被固定导航栏遮挡 */
+.main-content {
+  flex: 1;
+  padding-bottom: 30px;
+  margin-top: 80px; /* 数值约等于导航栏的总高度（含内边距），根据实际高度调整 */
+}
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .logo-icon {
+    width: 65px;
+    height: 50px;
+  }
+  
+  .logo-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .nav-icons {
+    display: flex;
+    gap: 20px;
+    font-size: 24px;
+  }
+  
+  .search-icon, .menu-icon {
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+  
+  .search-icon:hover, .menu-icon:hover {
+    opacity: 0.8;
+  }
+  
+  /* 主要内容区域 */
+  .main-content {
+    flex: 1;
+    padding-bottom: 30px; /* 减少底部整体留白 */
+  }
+  
+  /* 图片容器调整（关键间距优化） */
+  .content-image {
+    max-width: 90%; /* 两边留白 */
+    margin: 0 auto;
+    margin-bottom: 15px; /* 大幅减少图片底部间距 */
+    line-height: 0; /* 消除图片底部可能的空白 */
+  }
+  
+/* 同时增加图片顶部外边距，双重保障留白 */
+.first-image {
+    margin-top: 15px; /* 保持15px顶部间距，与导航栏底部内边距形成叠加效果 */
+    padding-top: 0;
+  }
+  
+  .responsive-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* 文字区域样式 - 改为左对齐 */
+.content-text1 {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    padding: 0 20px;
+    text-align: left; /* 从center改为left，实现左对齐 */
+  }
+  
+  .content-text1 p {
+    font-size: 22px;
+    line-height: 1.6;
+    color: #333;
+    margin: 10px 0; /* 减少文字块自身的内外边距 */
+  }
+  
+  .content-text2 {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    padding: 0 20px;
+    text-align: left; /* 从center改为left，实现左对齐 */
+  }
+  
+  .content-text2 p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    margin: 10px 0; /* 减少文字块自身的内外边距 */
+  }
+
+  /* 文本框容器 */
+  .text-boxes-container {
+    display: flex;
+    gap: 20px;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 10px; /* 减少与上方元素的间距 */
+  }
+  
+  /* 灰色底文本框样式 */
+  .text-box {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 30px;
+    border-radius: 8px;
+    min-width: 0;
+  }
+  
+  .text-box h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .text-box p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+  }
+  
+/* 指标数据板块整体样式 */
+.standards-section {
+  max-width: 1000px; /* 比图表板块稍窄，突出数据聚焦感 */
+  margin: 40px auto 30px; /* 与上方板块保持40px间距，下方30px */
+  padding: 0 20px; /* 左右留白，与其他板块统一 */
+}
+
+/* 单块指标样式 */
+.standard-item {
+  padding: 20px 0; /* 上下内边距20px，确保块内空间充足 */
+}
+
+/* 指标数值（第一行） */
+.standard-value {
+  font-size: 18px;
+  font-weight: bold; /* 加粗突出显示实测值 */
+  color: #333;
+  margin-bottom: 8px; /* 与参考值保持8px间距 */
+  line-height: 1.5;
+}
+
+/* 标准参考值（第二行） */
+.standard-reference {
+  font-size: 16px;
+  color: #666; /* 颜色稍浅，区分实测值与参考值 */
+  line-height: 1.5;
+}
+
+/* 分割线样式（五条） */
+.standard-divider {
+  border: none;
+  border-top: 1px solid #e0e0e0; /* 浅灰色分割线，不突兀 */
+  margin: 0; /* 与上下块紧密衔接 */
+}
+
+/* 响应式调整（小屏幕优化） */
+@media (max-width: 480px) {
+  .standard-value {
+    font-size: 17px;
+  }
+  .standard-reference {
+    font-size: 15px;
+  }
+  .standard-item {
+    padding: 15px 0; /* 小屏幕减少内边距 */
+  }
+}
+
+
+/* 4张图片板块样式 */
+.four-images-section {
+  max-width: 1200px; /* 与文本框容器保持一致的最大宽度 */
+  margin: 30px auto 0; /* 与上方文本框保持适当间距 */
+  padding: 0 20px; /* 左右留白，与其他板块统一 */
+}
+
+/* 图片网格布局 */
+.images-grid {
+  display: flex;
+  flex-wrap: wrap; /* 自动换行 */
+  gap: 15px; /* 图片之间的间距 */
+}
+
+/* 单个图片容器 */
+.image-item {
+  flex-basis: calc(25% - 11px); /* 4张一排（减去gap的分摊值） */
+  min-width: 0; /* 防止内容溢出 */
+}
+
+/* 图片响应式调整 */
+.image-item .responsive-img {
+  border-radius: 4px; /* 轻微圆角，增强视觉效果 */
+  transition: transform 0.3s ease; /*  hover效果过渡 */
+}
+
+.image-item .responsive-img:hover {
+  transform: scale(1.02); /* 轻微放大，增强交互感 */
+}
+
+/* 响应式布局调整 */
+@media (max-width: 768px) {
+  .image-item {
+    flex-basis: calc(50% - 7.5px); /* 中等屏幕2张一排 */
+  }
+}
+
+@media (max-width: 480px) {
+  .image-item {
+    flex-basis: 100%; /* 小屏幕1张一排 */
+  }
+  .images-grid {
+    gap: 10px; /* 小屏幕减小间距 */
+  }
+}
+
+/* 视频板块样式 */
+.video-section {
+  max-width: 1200px; /* 与其他板块保持一致的最大宽度 */
+  margin: 30px auto 0; /* 与上方图片板块保持30px间距 */
+  padding: 0 20px; /* 左右留白，统一页面风格 */
+}
+
+/* 视频容器 */
+.video-container {
+  width: 100%;
+  background-color: #f9f9f9; /* 轻微背景色，突出视频区域 */
+  border-radius: 8px; /* 与文本框圆角呼应 */
+  overflow: hidden; /* 隐藏视频边缘，配合圆角 */
+}
+
+/* 响应式视频样式 */
+.responsive-video {
+  width: 100%; /* 视频宽度充满容器 */
+  height: auto; /* 高度自适应，保持比例 */
+  min-height: 300px; /* 确保小屏幕下视频有足够高度 */
+  display: block;
+}
+
+/* 响应式调整（小屏幕优化） */
+@media (max-width: 480px) {
+  .responsive-video {
+    min-height: 200px; /* 小屏幕适当降低最小高度 */
+  }
+}
+
+  /* 页脚样式 */
+  .footer {
+    background-color: #000;
+    text-align: center;
+    padding: 24px 0 32px;
+    flex-shrink: 0;
+    color: #fff;
+    margin-top: 20px; /* 减少与内容区的距离 */
+  }
+  
+  .footer .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 16px;
+  }
+  
+  .footer .social-icons img {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .footer-divider {
+    border: none;
+    border-top: 1px solid #444;
+    margin: 0 auto 16px;
+    width: 80%;
+    max-width: 300px;
+  }
+  
+  .footer p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  
+  /* 响应式调整 */
+  @media (max-width: 768px) {
+    .text-boxes-container {
+      flex-direction: row;
+      flex-wrap: nowrap;
+      gap: 15px;
+    }
+    
+    .text-box {
+      padding: 20px;
+    }
+    
+    .text-box h3 {
+      font-size: 18px;
+    }
+    
+    .text-box p {
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .text-boxes-container {
+      flex-direction: column;
+    }
+  }

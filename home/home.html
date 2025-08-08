@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>BURANBUYAO - 首页</title>
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="logo-container">
+      <img src="https://buranbuyaoyurong.oss-cn-hangzhou.aliyuncs.com/home/%E7%99%BD%E7%BA%AFlogo%E5%9B%BE%E6%A0%87.png" alt="BURANBUYAO logo" class="logo-icon">
+      <span class="logo-text">BURANBUYAO</span>
+    </div>
+    <div class="nav-icons">
+      <i class="fas fa-search search-icon" title="搜索"></i>
+      <i class="fas fa-bars menu-icon" title="菜单"></i>
+    </div>
+  </nav>
+
+  <!-- 主要内容区域 -->
+  <main class="main-content">
+    <!-- 第一张图片 -->
+    <section class="content-image">
+      <img src="https://buranbuyaoyurong.oss-cn-hangzhou.aliyuncs.com/home/1.png" alt="主要展示图片" class="responsive-img">
+    </section>
+
+    <!-- 一段文字 -->
+    <section class="content-text1">
+      <p>90%纯白鸭绒</p>
+    </section>
+    <section class="content-text2">
+      <p>北京白鸭是全球著名的主要鸭品种之一，以其优良的肉质和适应性广泛受到养殖业的青睐。其养殖历史可追溯至400多年前，早在清朝时期，北京白鸭便因其肉质鲜美、风味独特而被选入宫廷，成为御膳佳品。1873年，这一品种传入欧美，凭借其优越的生长性能和高产特性，逐步在海外养殖市场站稳脚跟。后经英国樱桃谷农场的科学育种和改良，培育出了更具经济价值的“樱桃谷鸭”，这一名称也因此而得。目前，北京白鸭已发展成为全国养殖数量最多的肉蛋兼用型鸭种，在国内外市场均占据重要地位，并为现代养殖业提供了重要的种质资源。</p>
+    </section>
+
+    <!-- 第二张图片 -->
+    <section class="content-image">
+      <img src="https://buranbuyaoyurong.oss-cn-hangzhou.aliyuncs.com/home/2.png" alt="产品展示图片" class="responsive-img">
+    </section>
+
+    <!-- 两个并排的灰色底文本框 -->
+    <section class="text-boxes-container">
+      <div class="text-box">
+        <h3>产品特色</h3>
+        <p>我们的羽绒产品采用高品质羽绒填充，轻盈保暖，透气性好，让孩子在寒冷的季节也能保持舒适。所有产品经过严格的质量检测，确保安全无异味。</p>
+      </div>
+      <div class="text-box">
+        <h3>品牌理念</h3>
+        <p>布染布妖坚持"舒适、安全、时尚"的品牌理念，为儿童打造既美观又实用的羽绒制品。我们相信，好的产品能给孩子带来更好的成长体验。</p>
+      </div>
+    </section>
+
+<!-- 图表展示版块 -->
+<section class="charts-section">
+  <!-- 按钮容器 -->
+  <div class="chart-buttons">
+    <button class="chart-btn active" data-chart="turbidity">浊度图表</button>
+    <button class="chart-btn" data-chart="fluffiness">蓬松度图表</button>
+    <button class="chart-btn" data-chart="content">绒子含量图表</button>
+  </div>
+  
+  <!-- 图表容器 -->
+  <div class="chart-container">
+    <canvas id="dataChart"></canvas>
+  </div>
+</section>
+
+<!-- 引入Chart.js库用于绘制图表 -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+/* 图表版块样式 */
+.charts-section {
+  max-width: 1200px;
+  margin: 40px auto 30px;
+  padding: 0 20px;
+}
+
+/* 按钮容器 */
+.chart-buttons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* 按钮样式 */
+.chart-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+  min-width: 150px;
+  max-width: 200px;
+}
+
+/* 按钮颜色 - 与对应图表一致 */
+.chart-btn[data-chart="turbidity"] {
+  background-color: #3498db; /* 蓝色 */
+  color: white;
+}
+
+.chart-btn[data-chart="fluffiness"] {
+  background-color: #e67e22; /* 棕黄色 */
+  color: white;
+}
+
+.chart-btn[data-chart="content"] {
+  background-color: #2ecc71; /* 绿色 */
+  color: white;
+}
+
+/* 活跃状态按钮 */
+.chart-btn.active {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.chart-btn:hover:not(.active) {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* 图表容器 */
+.chart-container {
+  width: 100%;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#dataChart {
+  width: 100%;
+  max-width: 800px;
+  height: 350px;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .chart-container {
+    min-height: 300px;
+    padding: 15px;
+  }
+  
+  #dataChart {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chart-buttons {
+    gap: 10px;
+  }
+  
+  .chart-btn {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+  
+  .chart-container {
+    min-height: 250px;
+  }
+  
+  #dataChart {
+    height: 250px;
+  }
+}
+</style>
+
+<script>
+// 等待DOM加载完成
+document.addEventListener('DOMContentLoaded', function() {
+  // 获取图表上下文
+  const ctx = document.getElementById('dataChart').getContext('2d');
+  
+  // 图表数据配置
+  const chartData = {
+    // 浊度图表数据 (mm)
+    turbidity: {
+      labels: ['标准值', '实测值'],
+      datasets: [{
+        label: '浊度 (mm)',
+        data: [500, 1000],
+        backgroundColor: '#3498db',
+        borderColor: '#2980b9',
+        borderWidth: 1
+      }]
+    },
+    // 蓬松度图表数据 (cm)
+    fluffiness: {
+      labels: ['标准值', '实测值'],
+      datasets: [{
+        label: '蓬松度 (cm)',
+        data: [16, 16.6],
+        backgroundColor: '#e67e22',
+        borderColor: '#d35400',
+        borderWidth: 1
+      }]
+    },
+    // 绒子含量图表数据 (%)
+    content: {
+      labels: ['标准值', '实测值'],
+      datasets: [{
+        label: '绒子含量 (%)',
+        data: [85, 85.1],
+        backgroundColor: '#2ecc71',
+        borderColor: '#27ae60',
+        borderWidth: 1
+      }]
+    }
+  };
+  
+  // 初始化图表 - 默认显示浊度图表
+  let dataChart = new Chart(ctx, {
+    type: 'bar',
+    data: chartData.turbidity,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true,
+          grid: {
+            color: 'rgba(0, 0, 0, 0.05)'
+          }
+        },
+        x: {
+          grid: {
+            display: false
+          }
+        }
+      },
+      animation: {
+        duration: 500,
+        easing: 'easeOutQuart'
+      },
+      plugins: {
+        legend: {
+          position: 'top',
+          labels: {
+            font: {
+              size: 14
+            }
+          }
+        }
+      }
+    }
+  });
+  
+  // 获取所有图表按钮
+  const chartButtons = document.querySelectorAll('.chart-btn');
+  
+  // 为每个按钮添加点击事件
+  chartButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // 移除所有按钮的活跃状态
+      chartButtons.forEach(btn => btn.classList.remove('active'));
+      
+      // 为当前点击的按钮添加活跃状态
+      this.classList.add('active');
+      
+      // 获取要显示的图表类型
+      const chartType = this.getAttribute('data-chart');
+      
+      // 更新图表数据
+      dataChart.data = chartData[chartType];
+      
+      // 重新绘制图表
+      dataChart.update();
+    });
+  });
+});
+</script>
+
+<!-- 指标数据板块 -->
+<section class="standards-section">
+  <!-- 第一块：绒子含量 -->
+  <div class="standard-item">
+    <p class="standard-value">绒子含量: 85.1%</p>
+    <p class="standard-reference">标准参考值 ≥ 85.0%</p>
+  </div>
+  <hr class="standard-divider">
+  
+  <!-- 第二块：蓬松度 -->
+  <div class="standard-item">
+    <p class="standard-value">蓬松度: 16.6cm</p>
+    <p class="standard-reference">标准参考值 ≥ 16.0cm</p>
+  </div>
+  <hr class="standard-divider">
+  
+  <!-- 第三块：浊度 -->
+  <div class="standard-item">
+    <p class="standard-value">浊度: 1000mm</p>
+    <p class="standard-reference">标准参考值 ≥ 500mm</p>
+  </div>
+  <hr class="standard-divider">
+  
+  <!-- 第四块：陆禽毛含量 -->
+  <div class="standard-item">
+    <p class="standard-value">陆禽毛含量: 0.1%</p>
+    <p class="standard-reference">标准参考值 ≤ 1.0%</p>
+  </div>
+  <hr class="standard-divider">
+  
+  <!-- 第五块：杂质含量 -->
+  <div class="standard-item">
+    <p class="standard-value">杂质含量: 0.1%</p>
+    <p class="standard-reference">标准参考值 ≤ 1.0%</p>
+  </div>
+  <hr class="standard-divider">
+  
+  <!-- 第六块：残脂率 -->
+  <div class="standard-item">
+    <p class="standard-value">残脂率: 0.6%</p>
+    <p class="standard-reference">标准参考值 ≤ 1.2%</p>
+  </div>
+</section>
+
+
+<!-- 4张图片的新板块 -->
+<section class="four-images-section">
+  <div class="images-grid">
+    <div class="image-item">
+      <img src="https://buranbuyaoyurong.oss-cn-hangzhou.aliyuncs.com/home/3.png" alt="图片1描述" class="responsive-img">
+    </div>
+    <div class="image-item">
+      <img src="https://buranbuyaoyurong.oss-cn-hangzhou.aliyuncs.com/home/4.png" alt="图片2描述" class="responsive-img">
+    </div>
+    <div class="image-item">
+      <img src="https://buranbuyaoyurong.oss-cn-hangzhou.aliyuncs.com/home/5.png" alt="图片3描述" class="responsive-img">
+    </div>
+    <div class="image-item">
+      <img src="https://buranbuyaoyurong.oss-cn-hangzhou.aliyuncs.com/home/6.png" alt="图片4描述" class="responsive-img">
+    </div>
+  </div>
+</section>
+
+<!-- 视频板块 -->
+<section class="video-section">
+  <div class="video-container">
+    <!-- 视频元素（支持本地视频或视频链接） -->
+    <video 
+      class="responsive-video" 
+      controls 
+      poster="https://buranbuyaoyurong.oss-cn-hangzhou.aliyuncs.com/home/8.png"  <!-- 视频封面图（可选） -->
+    >
+      <source src="https://buranbuyaoyurong.oss-cn-hangzhou.aliyuncs.com/home/7.mp4" type="video/mp4">
+      <!-- 若视频格式不支持，显示备用文本 -->
+      您的浏览器不支持视频播放，请更新浏览器或使用其他设备观看。
+    </video>
+  </div>
+</section>
+</section>
+
+
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="social-icons">
+      <a href="#" title="微信">
+        <img src="https://img.icons8.com/color/48/weixing.png" alt="微信图标">
+      </a>
+    </div>
+    <hr class="footer-divider">
+    <p>© 2025 台州布染布妖童装工厂 版权所有</p>
+  </footer>
+
+  <script src="home.js"></script>
+</body>
+</html>
+    

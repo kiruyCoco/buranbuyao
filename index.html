@@ -1,61 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>首页</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f4f4f4;
-    }
-    .container {
-      text-align: center;
-    }
-    .title {
-      font-size: 2em;
-      margin-bottom: 20px;
-    }
-    .message {
-      font-size: 1.2em;
-      margin-bottom: 30px;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>BURANBUYAO</title>
+  <link rel="stylesheet" href="index.css" />
 </head>
 <body>
+  <div class="poster">
+    <img
+      src="https://buranbuyaoyurong.oss-cn-hangzhou.aliyuncs.com/buranbuyao/1.png"
+      alt="海报图片" />
+    <div class="text-overlay">
+      <p class="line1">祝贺您</p>
+      <p class="line2">拥有了一件安心可追溯的羽绒臻品</p>
+      <p class="line3">您的布染布妖专属ID:</p>
+      <p class="line4">240204274</p>
+      <p class="line5">请点击绿色箭头</p>
+      <p class="line6">点击绿色箭头将会进入到详情介绍页面</p>
+      <p class="line7">祝您生活愉快</p>
 
-  <div class="container">
-    <div class="title">欢迎来到我们的站点</div>
-    <div class="message">我们会根据您的设备跳转到相应的版本：</div>
-    <div id="deviceMessage"></div>
+<!-- 整个容器可点击跳转 -->
+<a href="home/home.html" class="icon-stack-link">
+  <div class="icon-stack">
+    <img
+      src="https://buranbuyaoyurong.oss-cn-hangzhou.aliyuncs.com/buranbuyao/3.gif"
+      alt="波浪环" class="bolang" />
+    <img
+      src="https://buranbuyaoyurong.oss-cn-hangzhou.aliyuncs.com/buranbuyao/2.png"
+      alt="绿色箭头" class="arrow-icon" />
+  </div>
+</a>
+    </div>
 
-    <script>
-      // 检测设备类型，判断是桌面端还是移动端
-      const userAgent = navigator.userAgent.toLowerCase();
-      const isMobile = /mobile/i.test(userAgent);
-      const deviceMessageElement = document.getElementById('deviceMessage');
-      const desktopHome = 'public/desktop/pages/home.html';
-      const mobileHome = 'public/mobile/pages/home.html';
-
-      if (isMobile) {
-        deviceMessageElement.innerHTML = '检测到您使用的是移动设备，正在跳转到移动端首页...';
-        setTimeout(() => {
-          window.location.href = mobileHome; // 跳转到移动端首页
-        }, 2000); // 延时 2 秒后跳转
-      } else {
-        deviceMessageElement.innerHTML = '检测到您使用的是桌面设备，正在跳转到桌面端首页...';
-        setTimeout(() => {
-          window.location.href = desktopHome; // 跳转到桌面端首页
-        }, 2000); // 延时 2 秒后跳转
-      }
-    </script>
+    <div class="logo">BURANBUYAO</div>
   </div>
 
+  <footer class="footer">
+    <div class="social-icons">
+      <a href="#" title="微信">
+        <img src="https://img.icons8.com/color/48/weixing.png" alt="微信图标" />
+      </a>
+    </div>
+    <hr class="footer-divider" />
+    <p>© 2025 台州布染布妖童装工厂 版权所有</p>
+  </footer>
 </body>
 </html>
